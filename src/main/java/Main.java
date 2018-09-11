@@ -8,9 +8,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fontUI/Enter_web_page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fontUI/Login_as_admin.fxml"));
         primaryStage.setTitle("Hotel Management");
-        primaryStage.setScene(new Scene(root, 1000 , 800));
+        primaryStage.setScene(new Scene(root, 1280 , 720));
         primaryStage.show();
     }
 
