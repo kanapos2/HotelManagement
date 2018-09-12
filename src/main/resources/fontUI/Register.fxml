@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Register_control">
+   <children>
+      <ImageView fitHeight="363.0" fitWidth="421.0" layoutX="200.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/HR.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="accountID" layoutX="794.0" layoutY="59.0" promptText="Account ID">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="796.0" layoutY="139.0" promptText="ex. admin">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="796.0" layoutY="219.0" promptText="Smith">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <Button layoutX="1137.0" layoutY="138.0" mnemonicParsing="false" text="Check" textFill="#3dbc26">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <TextField layoutX="797.0" layoutY="296.0" promptText="Smith">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="password" layoutX="798.0" layoutY="484.0" promptText="Password">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="current_password" layoutX="799.0" layoutY="542.0" promptText="Current Password">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </PasswordField>
+      <TextField layoutX="798.0" layoutY="368.0" promptText="smith@xxx.xx">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+      <Label layoutX="269.0" layoutY="487.0" text="Register">
+         <font>
+            <Font size="66.0" />
+         </font>
+      </Label>
+      <Label layoutX="627.0" layoutY="144.0" text="Username" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="629.0" layoutY="222.0" text="First name" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="627.0" layoutY="297.0" text="Last name" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="632.0" layoutY="376.0" text="Email" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="633.0" layoutY="439.0" text="Password" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="803.0" layoutY="441.0" text="* Minimum password length: 6" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="804.0" layoutY="460.0" text="* At least one number" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_confirm" layoutX="968.0" layoutY="621.0" mnemonicParsing="false" onAction="#checkPassword" style="-fx-background-color: #00ab00; -fx-border-color: black;" text="Confirm">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_cancel" layoutX="819.0" layoutY="621.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #ff2f38; -fx-border-color: black;" text="Cancel">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Label layoutX="628.0" layoutY="63.0" text="Account ID" textFill="#085fe1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="wrong_passwd" layoutX="1134.0" layoutY="498.0" prefHeight="28.0" prefWidth="134.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

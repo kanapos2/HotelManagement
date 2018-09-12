@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Login_as_admin_control">
    <children>
@@ -16,7 +17,7 @@
             <Image url="@../images/BgManu.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="username" layoutX="614.0" layoutY="285.0" prefHeight="68.0" prefWidth="411.0" promptText="admin">
+      <TextField fx:id="username" layoutX="614.0" layoutY="285.0" prefHeight="68.0" prefWidth="411.0" promptText="username">
          <font>
             <Font size="34.0" />
          </font>
@@ -41,5 +42,15 @@
             <Font size="43.0" />
          </font>
       </Label>
+      <Text fx:id="invalid" fill="RED" layoutX="612.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="415.3317704246404">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="btn_register" layoutX="1043.0" layoutY="434.0" mnemonicParsing="false" onAction="#register" prefHeight="61.0" prefWidth="165.0" text="Register">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
