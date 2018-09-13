@@ -1,5 +1,6 @@
 package Admin;
 
+import Store.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ import java.io.IOException;
 public class Register_control {
 
     @FXML
-    private TextField accountID ;
+    private TextField accountID,userNamefield ;
 
     @FXML
     private Button btn_cancle , btn_confirm ;
@@ -26,6 +27,8 @@ public class Register_control {
 
     @FXML
     private Label wrong_passwd ;
+
+    Database database = new Database();
 
     @FXML
     public void genID(String id) {
@@ -38,11 +41,12 @@ public class Register_control {
         btn_confirm = (Button) event.getSource();
         String passwd = "" + password.getText();
         String current_passwd = "" + current_password.getText();
-        if (passwd.length() < 6) {
+        if (passwd.length() >= 6 && current_passwd.equals(passwd)){
+            Confirm(passwd);
+        } else if (passwd.length() < 6) {
             wrong_passwd.setTextFill(Color.RED);
             wrong_passwd.setText("* Minimum password length: 6");
-        }
-        else {
+        }else {
             if (!passwd.equals(current_passwd)) {
                 wrong_passwd.setTextFill(Color.RED);
                 wrong_passwd.setText("wrong");
@@ -52,16 +56,23 @@ public class Register_control {
                 wrong_passwd.setText("Correct");
             }
         }
-
     }
 
     @FXML
     public void cancel(ActionEvent event) {
         btn_cancle = (Button) event.getSource();
+        Stage cancleStage = (Stage) btn_cancle.getScene().getWindow();
+        toLoginPage(cancleStage);
+    }
 
-        Stage stage = (Stage) btn_cancle.getScene().getWindow();
+    public void Confirm(String pw){ // Stored data and back to log-in page
+        database.addDataRegister(String.valueOf(userNamefield.getText()),pw);
+        Stage comfirmStage = (Stage) btn_confirm.getScene().getWindow();
+        toLoginPage(comfirmStage);
+    }
+    @FXML
+    public void toLoginPage(Stage stage){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Login_as_admin.fxml")) ;
-
         try {
             stage.setScene(new Scene(loader.load(),1280,720));
             stage.setTitle("Hotel Management");

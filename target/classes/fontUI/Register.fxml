@@ -21,7 +21,7 @@
             <Font size="25.0" />
          </font>
       </TextField>
-      <TextField layoutX="796.0" layoutY="139.0" promptText="ex. admin">
+      <TextField fx:id="userNamefield" layoutX="796.0" layoutY="139.0" promptText="ex. admin">
          <font>
             <Font size="25.0" />
          </font>

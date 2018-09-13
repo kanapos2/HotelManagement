@@ -1,5 +1,6 @@
 package Admin;
 
+import Store.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,8 +31,14 @@ public class Login_as_admin_control {
     public void login(ActionEvent event) {
         String user = username.getText();
         String passwd = password.getText();
-
-        if (user.equals("admin") && passwd.equals("admin") && event.getSource().equals(btn_login)) {
+        String checkLogin = user+passwd;
+        boolean canLogin = false;
+        for (String i: Database.getUserName()) {
+            if (i.equals(checkLogin));
+            canLogin = true;
+            break;
+        }
+        if (canLogin == true && event.getSource().equals(btn_login)) {
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 
