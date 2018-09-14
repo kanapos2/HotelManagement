@@ -1,6 +1,6 @@
 package Admin;
 
-import Store.ArrayDatabase;
+import Store.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class Login_as_admin_control {
         String passwd = password.getText();
         String checkLogin = user+passwd;
         boolean canLogin = false;
-        for (String i: ArrayDatabase.getUserName()) {
+        for (String i: Database.getUserName()) {
             if (i.equals(checkLogin));
             canLogin = true;
             break;
