@@ -10,6 +10,7 @@ public class ArrayDatabase {
 
     public ArrayDatabase() {
         this.userName = new ArrayList<>();
+        userName.add("adminadmin");
     }
 
     public void addDataRegister(String user,String passwd){
