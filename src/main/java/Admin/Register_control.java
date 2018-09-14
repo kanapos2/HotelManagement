@@ -1,6 +1,6 @@
 package Admin;
 
-import Store.Database;
+import Store.ArrayDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,7 @@ public class Register_control {
     @FXML
     private Label wrong_passwd ;
 
-    Database database = new Database();
+    ArrayDatabase arrayDatabase = new ArrayDatabase();
 
     @FXML
     public void genID(String id) {
@@ -66,7 +66,7 @@ public class Register_control {
     }
 
     public void Confirm(String pw){ // Stored data and back to log-in page
-        database.addDataRegister(String.valueOf(userNamefield.getText()),pw);
+        arrayDatabase.addDataRegister(String.valueOf(userNamefield.getText()),pw);
         Stage comfirmStage = (Stage) btn_confirm.getScene().getWindow();
         toLoginPage(comfirmStage);
     }
