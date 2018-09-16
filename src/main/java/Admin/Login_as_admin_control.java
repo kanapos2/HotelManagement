@@ -32,12 +32,12 @@ public class Login_as_admin_control {
         String user = username.getText();
         String passwd = password.getText();
         String checkLogin = user+passwd;
-        boolean canLogin = false;
-        for (String i: ArrayDatabase.getUserName()) {
-            if (i.equals(checkLogin));
-            canLogin = true;
-            break;
-        }
+        boolean canLogin = true;
+//        for (String i: ArrayDatabase.getUserName()) {
+//            if (i.equals(checkLogin));
+//            canLogin = true;
+//            break;
+//        }
         if (canLogin == true && event.getSource().equals(btn_login)) {
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
