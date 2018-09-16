@@ -16,42 +16,42 @@
             <Image url="@../images/HR.png" />
          </image>
       </ImageView>
-      <TextField fx:id="accountID" layoutX="823.0" layoutY="30.0" promptText="Account ID">
+      <TextField fx:id="accountID" layoutX="794.0" layoutY="59.0" promptText="IdentifyID">
          <font>
             <Font size="25.0" />
          </font>
       </TextField>
-      <TextField fx:id="userNamefield" layoutX="823.0" layoutY="100.0" promptText="ex. admin">
+      <TextField fx:id="userNamefield" layoutX="796.0" layoutY="139.0" promptText="ex. admin">
          <font>
             <Font size="25.0" />
          </font>
       </TextField>
-      <TextField layoutX="823.0" layoutY="174.0" promptText="Smith">
+      <TextField fx:id="firstnameField" layoutX="796.0" layoutY="219.0" promptText="Smith">
          <font>
             <Font size="25.0" />
          </font>
       </TextField>
-      <Button layoutX="1158.0" layoutY="99.0" mnemonicParsing="false" text="Check" textFill="#3dbc26">
+      <Button fx:id="check_btn" layoutX="1137.0" layoutY="138.0" mnemonicParsing="false" onAction="#checkPassword" text="Check" textFill="#3dbc26">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <TextField layoutX="824.0" layoutY="251.0" promptText="Smith">
+      <TextField fx:id="lastnameField" layoutX="797.0" layoutY="296.0" promptText="Smith">
          <font>
             <Font size="25.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="password" layoutX="825.0" layoutY="504.0" promptText="Password">
+      <PasswordField fx:id="password" layoutX="798.0" layoutY="503.0" promptText="Password">
          <font>
             <Font size="25.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="current_password" layoutX="826.0" layoutY="562.0" promptText="Current Password">
+      <PasswordField fx:id="current_password" layoutX="798.0" layoutY="561.0" promptText="Current Password">
          <font>
             <Font size="25.0" />
          </font>
       </PasswordField>
-      <TextField layoutX="825.0" layoutY="388.0" promptText="smith@xxx.xx">
+      <TextField fx:id="emailField" layoutX="798.0" layoutY="368.0" promptText="smith@xxx.xx">
          <font>
             <Font size="25.0" />
          </font>
@@ -61,52 +61,52 @@
             <Font size="66.0" />
          </font>
       </Label>
-      <Label layoutX="613.0" layoutY="105.0" text="Username" textFill="#085fe1">
+      <Label layoutX="627.0" layoutY="144.0" text="Username" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="615.0" layoutY="177.0" text="First name" textFill="#085fe1">
+      <Label layoutX="629.0" layoutY="222.0" text="First name" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="613.0" layoutY="252.0" text="Last name" textFill="#085fe1">
+      <Label layoutX="627.0" layoutY="297.0" text="Last name" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="616.0" layoutY="396.0" text="Email" textFill="#085fe1">
+      <Label layoutX="632.0" layoutY="376.0" text="Email" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="618.0" layoutY="459.0" text="Password" textFill="#085fe1">
+      <Label layoutX="633.0" layoutY="439.0" text="Password" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="830.0" layoutY="461.0" text="* Minimum password length: 6" textFill="RED">
+      <Label layoutX="803.0" layoutY="441.0" text="* Minimum password length: 6" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="831.0" layoutY="480.0" text="* At least one number" textFill="RED">
+      <Label layoutX="803.0" layoutY="460.0" text="* At least one number" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="btn_confirm" layoutX="995.0" layoutY="641.0" mnemonicParsing="false" onAction="#checkPassword" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Confirm">
+      <Button fx:id="btn_confirm" disable="true" layoutX="965.0" layoutY="626.0" mnemonicParsing="false" onAction="#checkPassword" style="-fx-background-color: #1ed66b#1ed66b; -fx-border-color: black;" text="Confirm">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btn_cancel" layoutX="846.0" layoutY="641.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #FF3333; -fx-border-color: black;" text="Cancel">
+      <Button fx:id="btn_cancel" layoutX="816.0" layoutY="626.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #ff2f38; -fx-border-color: black;" text="Cancel">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Label layoutX="614.0" layoutY="37.0" text="Account ID" textFill="#085fe1">
+      <Label layoutX="628.0" layoutY="63.0" text="IdentifyID" textFill="#085fe1">
          <font>
             <Font size="30.0" />
          </font>
@@ -116,14 +116,9 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField layoutX="825.0" layoutY="320.0" promptText="Smith">
+      <Label layoutX="803.0" layoutY="478.0" prefHeight="19.0" prefWidth="163.0" text="* Without special letter" textFill="RED">
          <font>
-            <Font size="25.0" />
-         </font>
-      </TextField>
-      <Label layoutX="612.0" layoutY="321.0" text="Phone number" textFill="#085fe1">
-         <font>
-            <Font size="30.0" />
+            <Font size="15.0" />
          </font>
       </Label>
    </children>

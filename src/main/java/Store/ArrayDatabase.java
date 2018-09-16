@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Database {
+public class ArrayDatabase {
     static protected ArrayList<String> userName;
 
-    public Database() {
+    public ArrayDatabase() {
         this.userName = new ArrayList<>();
+        userName.add("adminadmin");
     }
 
     public void addDataRegister(String user,String passwd){
@@ -22,9 +23,10 @@ public class Database {
         return userName;
     }
 
+
     @Override
     public String toString() {
-        return "Database{" + "userName=" + userName + '}';
+        return "ArrayDatabase{" + "userName=" + userName + '}';
     }
 
 }

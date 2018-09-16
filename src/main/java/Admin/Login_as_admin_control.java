@@ -1,6 +1,6 @@
 package Admin;
 
-import Store.Database;
+import Store.ArrayDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,15 +32,13 @@ public class Login_as_admin_control {
         String user = username.getText();
         String passwd = password.getText();
         String checkLogin = user+passwd;
-        boolean canLogin = true;
-//        for (String i: Database.getUserName()) {
-//            if (i.equals(checkLogin));
-//            canLogin = true;
-//            break;
-//        }
+        boolean canLogin = false;
+        for (String i: ArrayDatabase.getUserName()) {
+            if (i.equals(checkLogin));
+            canLogin = true;
+            break;
+        }
         if (canLogin == true && event.getSource().equals(btn_login)) {
-
-            System.out.println("Login");
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 
@@ -50,7 +48,7 @@ public class Login_as_admin_control {
                 stage.setTitle("Login hotel management for admin");
 
                 Manu_control controller = (Manu_control) loader.getController();
-                controller.setUser("Login as : "+username.getText());
+                controller.setUser(username.getText());
 
                 stage.show();
 
@@ -65,9 +63,6 @@ public class Login_as_admin_control {
 
     @FXML
     public void register(ActionEvent event) {
-
-        System.out.println("Register");
-
         btn_register = (Button) event.getSource();
         Stage stage = (Stage) btn_register.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Register.fxml")) ;
