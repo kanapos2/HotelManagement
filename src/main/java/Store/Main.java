@@ -14,8 +14,8 @@ public class Main {
         Connection connection = db.openDatabase();
         UserDBControl userDBControl = new UserDBControl(connection);
 
-        User user = new User("106","Nutty","Nut",
-                "Nuttapat","0888888888","nut@gmail.com","nuttyy");
+        User user = new User("000","admin","Admin",
+                "Superadmin","8888888888","adminHR@hr.com","adminadmin");
         System.out.println(userDBControl.addUser(user));
 
         /////////////////////////////////////////////////////// เอาไว้อ่านข้อมูลจาก database

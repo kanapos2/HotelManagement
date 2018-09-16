@@ -1,6 +1,9 @@
 package Admin;
 
+import Model.User;
 import Store.ArrayDatabase;
+import Store.DBConnector;
+import Store.UserDBControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +15,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Array;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Login_as_admin_control {
 
@@ -27,17 +33,25 @@ public class Login_as_admin_control {
     @FXML
     private PasswordField password ;
 
+    protected ArrayList<User> userList;
+
     @FXML
     public void login(ActionEvent event) {
         String user = username.getText();
         String passwd = password.getText();
         String checkLogin = user+passwd;
-        boolean canLogin = true;
-//        for (String i: ArrayDatabase.getUserName()) {
-//            if (i.equals(checkLogin));
-//            canLogin = true;
-//            break;
-//        }
+        boolean canLogin = false;
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        UserDBControl userDBControl = new UserDBControl(connection);
+        this.userList = userDBControl.readUser();
+
+        for (int i = 0; i < userList.size() ; i++) {
+            if (((userList.get(i).getUserName())+(userList.get(i).getPassWord())).equals(checkLogin)){
+                System.out.println(((userList.get(i).getUserName())+(userList.get(i).getPassWord())));
+                canLogin = true;
+            }
+        }
         if (canLogin == true && event.getSource().equals(btn_login)) {
 
             Stage stage = (Stage) btn_login.getScene().getWindow();

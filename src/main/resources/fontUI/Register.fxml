@@ -111,17 +111,12 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="wrong_passwd" layoutX="1134.0" layoutY="498.0" prefHeight="28.0" prefWidth="134.0" textAlignment="CENTER" textFill="RED">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
       <Label layoutX="803.0" layoutY="513.0" prefHeight="19.0" prefWidth="163.0" text="* Without special letter" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="797.0" layoutY="335.0" promptText="Smith">
+      <TextField fx:id="phoneField" layoutX="797.0" layoutY="335.0" promptText="Smith">
          <font>
             <Font size="25.0" />
          </font>

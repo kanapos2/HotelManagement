@@ -18,12 +18,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 
 public class Register_control {
 
     @FXML
-    private TextField accountID,userNamefield ,firstnameField,lastnameField,emailField;
+    private TextField accountID,userNamefield ,firstnameField,lastnameField,emailField,phoneField;
 
     @FXML
     private Button btn_cancle , btn_confirm ,check_btn;
@@ -31,13 +32,12 @@ public class Register_control {
     @FXML
     private TextField  password , current_password ;
 
-    @FXML
-    private Label wrong_passwd ;
 
     private ArrayList<User> listofUser;
 
     protected boolean checkBTNstate = false; // false ห้ามกด confirm
     protected int checkintsame = 0;
+    protected boolean pwdPass = false; // เช็คพาสเวิด ห้ามมีอัขระ และมีตัวเลขอย่างน้อย 1 ตัว
 
 
     @FXML
@@ -78,6 +78,7 @@ public class Register_control {
             checkSameuser();
         }
         if (b.equals(btn_confirm)){
+            passWordinputletter(password.getText()+"");
             int addLetter = 0;
             for (int i = 0; i < emailField.getText().length(); i++) {
                 if ((emailField.getText()).charAt(i) == '@'){
@@ -85,19 +86,41 @@ public class Register_control {
                 }
             }
             if (passwd.length() >= 6 && current_passwd.equals(passwd) && isCheckBTNstate() == true && !accountID.getText().equals("") && !firstnameField.getText().equals("")
-                    && !lastnameField.getText().equals("") && !emailField.getText().equals("") && addLetter == 1) {
+                    && !lastnameField.getText().equals("")&& !phoneField.getText().equals("") && !emailField.getText().equals("") && addLetter == 1 && pwdPass == true) {
                 Confirm();
                 checkBTNstate =false;
-            } else if (passwd.length() < 6) {
-                wrong_passwd.setTextFill(Color.RED);
-                wrong_passwd.setText("* Minimum password length: 6");
-            } else {
+                pwdPass = false;
+            }if (accountID.getText().equals("")){
+                accountID.setStyle("-fx-border-color: red");
+            }if (firstnameField.getText().equals("")){
+                firstnameField.setStyle("-fx-border-color: red");
+            }if (lastnameField.getText().equals("")){
+                lastnameField.setStyle("-fx-border-color: red");
+            }if (phoneField.getText().equals("")){
+                phoneField.setStyle("-fx-border-color: red");
+            }if (emailField.getText().equals("")) {
+                emailField.setStyle("-fx-border-color: red");
+            }if (addLetter == 0){
+                emailField.setStyle("-fx-border-color: red");
+            }if (!accountID.getText().equals("")){
+                accountID.setStyle("-fx-border-color: green");
+            }if (!firstnameField.getText().equals("")){
+                firstnameField.setStyle("-fx-border-color: green");
+            }if (!lastnameField.getText().equals("")){
+                lastnameField.setStyle("-fx-border-color: green");
+            }if (!phoneField.getText().equals("")){
+                phoneField.setStyle("-fx-border-color: green");
+            }if (!emailField.getText().equals("")){
+                emailField.setStyle("-fx-border-color: green");
+            }else if (passwd.length() < 6) {
+                password.setStyle("-fx-border-color: red");
+                current_password.setStyle("-fx-border-color: red");
+            }else {
                 if (!passwd.equals(current_passwd)) {
-                    wrong_passwd.setTextFill(Color.RED);
-                    wrong_passwd.setText("wrong");
+                    password.setStyle("-fx-border-color: red");
                 } else {
-                    wrong_passwd.setTextFill(Color.GREEN);
-                    wrong_passwd.setText("Correct");
+                    password.setStyle("-fx-border-color: red");
+                    current_password.setStyle("-fx-border-color: red");
                 }
             }
         }
@@ -114,9 +137,9 @@ public class Register_control {
         DBConnector db = new DBConnector();
         Connection connection = db.openDatabase();
         UserDBControl userDBControl = new UserDBControl(connection);
-//        User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),
-//                emailField.getText(),password.getText());
-//        userDBControl.addUser(newUser);
+        User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneField.getText(),
+                emailField.getText(),password.getText());
+        userDBControl.addUser(newUser);
         accountID.clear();
         userNamefield.clear();
         firstnameField.clear();
@@ -127,6 +150,32 @@ public class Register_control {
         Stage comfirmStage = (Stage) btn_confirm.getScene().getWindow();
         toLoginPage(comfirmStage);
     }
+
+    @FXML
+    public boolean passWordinputletter(String input){
+        String checkNumber =""; //แทนตัวเลข
+        for (int i = 0; i < input.length() ; i++) {
+            if (input.charAt(i) == '1' || input.charAt(i) == '2' || input.charAt(i) == '3' || input.charAt(i) == '4' || input.charAt(i) == '5'
+            || input.charAt(i) == '6' || input.charAt(i) == '7' || input.charAt(i) == '8' || input.charAt(i) == '9' || input.charAt(i) == '0'){
+                checkNumber += "a";
+            } else {
+                checkNumber += input.charAt(i);
+            }
+        }
+        if (Pattern.matches("[a-zA-Z]+", checkNumber) && !checkNumber.equals(input)){
+            this.pwdPass = true;
+        }else {
+            this.pwdPass = false;
+            password.setStyle("-fx-border-color: red");
+        }
+        System.out.println(pwdPass+"");
+        return isPwdPass();
+    }
+
+    public boolean isPwdPass() {
+        return pwdPass;
+    }
+
     @FXML
     public void toLoginPage(Stage stage){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Login_as_admin.fxml")) ;
@@ -141,13 +190,5 @@ public class Register_control {
             e1.printStackTrace();
         }
     }
-
-
-
-
-
-
-
-
 
 }

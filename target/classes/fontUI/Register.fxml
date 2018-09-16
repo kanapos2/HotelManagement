@@ -121,7 +121,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="797.0" layoutY="335.0" promptText="Smith">
+      <TextField fx:id="phoneField" layoutX="797.0" layoutY="335.0" promptText="Smith">
          <font>
             <Font size="25.0" />
          </font>
