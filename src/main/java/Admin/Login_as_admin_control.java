@@ -32,13 +32,15 @@ public class Login_as_admin_control {
         String user = username.getText();
         String passwd = password.getText();
         String checkLogin = user+passwd;
-        boolean canLogin = false;
-        for (String i: Database.getUserName()) {
-            if (i.equals(checkLogin));
-            canLogin = true;
-            break;
-        }
+        boolean canLogin = true;
+//        for (String i: Database.getUserName()) {
+//            if (i.equals(checkLogin));
+//            canLogin = true;
+//            break;
+//        }
         if (canLogin == true && event.getSource().equals(btn_login)) {
+
+            System.out.println("Login");
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 
@@ -48,7 +50,7 @@ public class Login_as_admin_control {
                 stage.setTitle("Login hotel management for admin");
 
                 Manu_control controller = (Manu_control) loader.getController();
-                controller.setUser(username.getText());
+                controller.setUser("Login as : "+username.getText());
 
                 stage.show();
 
@@ -63,6 +65,9 @@ public class Login_as_admin_control {
 
     @FXML
     public void register(ActionEvent event) {
+
+        System.out.println("Register");
+
         btn_register = (Button) event.getSource();
         Stage stage = (Stage) btn_register.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Register.fxml")) ;
@@ -72,7 +77,6 @@ public class Login_as_admin_control {
             stage.setTitle("Register user");
 
             Register_control controller = (Register_control) loader.getController();
-            controller.genID("110001");
 
             stage.show();
         } catch (IOException e1){

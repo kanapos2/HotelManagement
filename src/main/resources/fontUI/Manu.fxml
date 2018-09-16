@@ -1,53 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-position: pink;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Manu_control">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Manu_control">
    <children>
-      <ImageView fitHeight="874.0" fitWidth="1310.0" layoutX="-11.0" layoutY="-93.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/BgManu.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="413.0" layoutY="223.0" mnemonicParsing="false" prefHeight="258.0" prefWidth="243.0" textAlignment="CENTER">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Button>
-      <Button layoutX="669.0" layoutY="222.0" mnemonicParsing="false" prefHeight="258.0" prefWidth="243.0" text="Reserve">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Button>
-      <Label layoutX="448.0" layoutY="271.0" text="Check">
-         <font>
-            <Font size="60.0" />
-         </font>
-      </Label>
-      <Label layoutX="449.0" layoutY="339.0" text="avaliable" textFill="#0f8a42">
-         <font>
-            <Font size="44.0" />
-         </font>
-      </Label>
-      <Label layoutX="490.0" layoutY="388.0" text="room">
-         <font>
-            <Font size="41.0" />
-         </font>
-      </Label>
-      <Label layoutX="939.0" layoutY="31.0" text="Login as :">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Label>
-      <Label fx:id="user" layoutX="1097.0" layoutY="31.0" text="text">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Label>
+      <MenuBar VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <items>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="135.0" layoutX="91.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dippinno_logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btn_signout" layoutX="77.0" layoutY="608.0" mnemonicParsing="false" onAction="#signOut" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: #ff3333;" text="Sign out" textFill="#e4e4e4">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Reserve">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="42.0" layoutY="202.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check out">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="40.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check room">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="user" alignment="CENTER" layoutX="39.0" layoutY="58.0" prefHeight="24.0" prefWidth="248.0" text="Label" textAlignment="CENTER" textFill="#1f7aa8">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+               <content>
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="668.0" prefWidth="951.0">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="667.0" prefWidth="310.0" style="-fx-border-color: black;">
+                           <children>
+                              <TextField alignment="CENTER" editable="false" layoutX="40.0" layoutY="67.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1100" />
+                              <TextField alignment="CENTER" editable="false" layoutX="41.0" layoutY="126.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1101" />
+                              <TextField alignment="CENTER" editable="false" layoutX="42.0" layoutY="185.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1102" />
+                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="244.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1103" />
+                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="303.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1104" />
+                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="362.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1105" />
+                              <TextField alignment="CENTER" editable="false" layoutX="45.0" layoutY="421.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1106" />
+                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="480.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1107" />
+                              <TextField alignment="CENTER" editable="false" layoutX="47.0" layoutY="540.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1108" />
+                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="599.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1109" />
+                              <TextField alignment="CENTER" editable="false" layoutX="198.0" layoutY="68.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1110" />
+                              <TextField alignment="CENTER" editable="false" layoutX="199.0" layoutY="127.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1111" />
+                              <TextField alignment="CENTER" editable="false" layoutX="200.0" layoutY="186.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1112" />
+                              <TextField alignment="CENTER" editable="false" layoutX="201.0" layoutY="245.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1113" />
+                              <TextField alignment="CENTER" editable="false" layoutX="201.0" layoutY="304.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1114" />
+                              <TextField alignment="CENTER" editable="false" layoutX="202.0" layoutY="363.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1115" />
+                              <TextField alignment="CENTER" editable="false" layoutX="203.0" layoutY="422.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1116" />
+                              <TextField alignment="CENTER" editable="false" layoutX="204.0" layoutY="481.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1117" />
+                              <TextField alignment="CENTER" editable="false" layoutX="205.0" layoutY="541.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1118" />
+                              <TextField alignment="CENTER" editable="false" layoutX="206.0" layoutY="600.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1119" />
+                              <Label layoutX="89.0" layoutY="17.0" text=" 1st floor" textAlignment="CENTER" textFill="#030303">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="310.0" layoutY="1.0" prefHeight="667.0" prefWidth="333.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label layoutX="93.0" layoutY="14.0" text=" 2nd floor" textAlignment="CENTER" textFill="#030303">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="69.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2200" />
+                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="127.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2201" />
+                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="186.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2202" />
+                              <TextField alignment="CENTER" editable="false" layoutX="45.0" layoutY="244.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2203" />
+                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="302.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2204" />
+                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="361.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2205" />
+                              <TextField alignment="CENTER" editable="false" layoutX="47.0" layoutY="420.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2206" />
+                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="478.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2207" />
+                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="537.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2208" />
+                              <TextField alignment="CENTER" editable="false" layoutX="49.0" layoutY="595.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2209" />
+                              <TextField alignment="CENTER" editable="false" layoutX="214.0" layoutY="68.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2210" />
+                              <TextField alignment="CENTER" editable="false" layoutX="215.0" layoutY="126.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2211" />
+                              <TextField alignment="CENTER" editable="false" layoutX="215.0" layoutY="185.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2212" />
+                              <TextField alignment="CENTER" editable="false" layoutX="216.0" layoutY="243.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2213" />
+                              <TextField alignment="CENTER" editable="false" layoutX="217.0" layoutY="301.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2214" />
+                              <TextField alignment="CENTER" editable="false" layoutX="217.0" layoutY="360.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2215" />
+                              <TextField alignment="CENTER" editable="false" layoutX="218.0" layoutY="419.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2216" />
+                              <TextField alignment="CENTER" editable="false" layoutX="219.0" layoutY="477.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2217" />
+                              <TextField alignment="CENTER" editable="false" layoutX="219.0" layoutY="536.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2218" />
+                              <TextField alignment="CENTER" editable="false" layoutX="220.0" layoutY="594.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2219" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="642.0" layoutY="1.0" prefHeight="667.0" prefWidth="295.0" style="-fx-border-color: black;">
+                           <children>
+                              <Label layoutX="75.0" layoutY="15.0" text=" 3rd floor" textAlignment="CENTER" textFill="#030303">
+                                 <font>
+                                    <Font size="33.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="66.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3300" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="125.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3301" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="184.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3302" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="243.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3303" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="301.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3304" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="360.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3305" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="419.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3306" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="477.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3307" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="536.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3308" />
+                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="595.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3309" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="65.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3310" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="124.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3311" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="183.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3312" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="242.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3313" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="300.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3314" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="359.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3315" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="418.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3316" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="476.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3317" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="535.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3318" />
+                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="594.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3319" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
+      <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="11.0" fx:id="x3" />
+               </font>
+               <textFill>
+                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+               </textFill>
+            </Label>
+            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>
