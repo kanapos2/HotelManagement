@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -74,7 +73,7 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Reserve">
+                  <Button layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -102,89 +101,67 @@
                      <children>
                         <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="667.0" prefWidth="310.0" style="-fx-border-color: black;">
                            <children>
-                              <TextField alignment="CENTER" editable="false" layoutX="40.0" layoutY="67.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1100" />
-                              <TextField alignment="CENTER" editable="false" layoutX="41.0" layoutY="126.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1101" />
-                              <TextField alignment="CENTER" editable="false" layoutX="42.0" layoutY="185.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1102" />
-                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="244.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1103" />
-                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="303.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1104" />
-                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="362.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1105" />
-                              <TextField alignment="CENTER" editable="false" layoutX="45.0" layoutY="421.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1106" />
-                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="480.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1107" />
-                              <TextField alignment="CENTER" editable="false" layoutX="47.0" layoutY="540.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1108" />
-                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="599.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1109" />
-                              <TextField alignment="CENTER" editable="false" layoutX="198.0" layoutY="68.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1110" />
-                              <TextField alignment="CENTER" editable="false" layoutX="199.0" layoutY="127.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="1111" />
-                              <TextField alignment="CENTER" editable="false" layoutX="200.0" layoutY="186.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1112" />
-                              <TextField alignment="CENTER" editable="false" layoutX="201.0" layoutY="245.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1113" />
-                              <TextField alignment="CENTER" editable="false" layoutX="201.0" layoutY="304.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1114" />
-                              <TextField alignment="CENTER" editable="false" layoutX="202.0" layoutY="363.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1115" />
-                              <TextField alignment="CENTER" editable="false" layoutX="203.0" layoutY="422.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1116" />
-                              <TextField alignment="CENTER" editable="false" layoutX="204.0" layoutY="481.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1117" />
-                              <TextField alignment="CENTER" editable="false" layoutX="205.0" layoutY="541.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1118" />
-                              <TextField alignment="CENTER" editable="false" layoutX="206.0" layoutY="600.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="1119" />
-                              <Label layoutX="89.0" layoutY="17.0" text=" 1st floor" textAlignment="CENTER" textFill="#030303">
+                              <Label layoutX="89.0" layoutY="17.0" text="1st floor" textAlignment="CENTER" textFill="#030303">
                                  <font>
                                     <Font size="33.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="A101" layoutX="32.0" layoutY="168.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A101" />
+                              <Button fx:id="A102" layoutX="32.0" layoutY="226.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A102" />
+                              <Button fx:id="A103" layoutX="32.0" layoutY="284.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A103" />
+                              <Button fx:id="A104" layoutX="32.0" layoutY="343.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A104" />
+                              <Button fx:id="A105" layoutX="33.0" layoutY="402.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A105" />
+                              <Button fx:id="A106" layoutX="184.0" layoutY="169.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A106" />
+                              <Button fx:id="A107" layoutX="184.0" layoutY="227.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A107" />
+                              <Button fx:id="A108" layoutX="184.0" layoutY="286.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A108" />
+                              <Button fx:id="A109" layoutX="184.0" layoutY="347.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A109" />
+                              <Button fx:id="A110" layoutX="184.0" layoutY="406.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A110" />
+                              <Button fx:id="A111" layoutX="113.0" layoutY="480.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A111" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="310.0" layoutY="1.0" prefHeight="667.0" prefWidth="333.0" style="-fx-border-color: black;">
                            <children>
-                              <Label layoutX="93.0" layoutY="14.0" text=" 2nd floor" textAlignment="CENTER" textFill="#030303">
+                              <Label layoutX="93.0" layoutY="14.0" text="2nd floor" textAlignment="CENTER" textFill="#030303">
                                  <font>
                                     <Font size="33.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" editable="false" layoutX="43.0" layoutY="69.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2200" />
-                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="127.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2201" />
-                              <TextField alignment="CENTER" editable="false" layoutX="44.0" layoutY="186.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2202" />
-                              <TextField alignment="CENTER" editable="false" layoutX="45.0" layoutY="244.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2203" />
-                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="302.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2204" />
-                              <TextField alignment="CENTER" editable="false" layoutX="46.0" layoutY="361.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2205" />
-                              <TextField alignment="CENTER" editable="false" layoutX="47.0" layoutY="420.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2206" />
-                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="478.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2207" />
-                              <TextField alignment="CENTER" editable="false" layoutX="48.0" layoutY="537.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2208" />
-                              <TextField alignment="CENTER" editable="false" layoutX="49.0" layoutY="595.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2209" />
-                              <TextField alignment="CENTER" editable="false" layoutX="214.0" layoutY="68.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2210" />
-                              <TextField alignment="CENTER" editable="false" layoutX="215.0" layoutY="126.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2211" />
-                              <TextField alignment="CENTER" editable="false" layoutX="215.0" layoutY="185.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2212" />
-                              <TextField alignment="CENTER" editable="false" layoutX="216.0" layoutY="243.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2213" />
-                              <TextField alignment="CENTER" editable="false" layoutX="217.0" layoutY="301.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2214" />
-                              <TextField alignment="CENTER" editable="false" layoutX="217.0" layoutY="360.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2215" />
-                              <TextField alignment="CENTER" editable="false" layoutX="218.0" layoutY="419.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2216" />
-                              <TextField alignment="CENTER" editable="false" layoutX="219.0" layoutY="477.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="2217" />
-                              <TextField alignment="CENTER" editable="false" layoutX="219.0" layoutY="536.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2218" />
-                              <TextField alignment="CENTER" editable="false" layoutX="220.0" layoutY="594.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="2219" />
+                              <Button fx:id="B202" layoutX="50.0" layoutY="235.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="B202" />
+                              <Button fx:id="B203" layoutX="50.0" layoutY="294.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="B203" />
+                              <Button fx:id="B204" layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="B204" />
+                              <Button fx:id="B201" layoutX="49.0" layoutY="177.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B201" />
+                              <Button fx:id="B206" layoutX="206.0" layoutY="176.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B206" />
+                              <Button fx:id="B207" layoutX="206.0" layoutY="235.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B207" />
+                              <Button fx:id="B208" layoutX="206.0" layoutY="294.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B208" />
+                              <Button fx:id="B205" layoutX="50.0" layoutY="412.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B205" />
+                              <Button fx:id="B209" layoutX="207.0" layoutY="354.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="B209" />
+                              <Button fx:id="B210" layoutX="207.0" layoutY="413.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B210" />
+                              <Button fx:id="B211" layoutX="134.0" layoutY="488.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="B211" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="642.0" layoutY="1.0" prefHeight="667.0" prefWidth="295.0" style="-fx-border-color: black;">
                            <children>
-                              <Label layoutX="75.0" layoutY="15.0" text=" 3rd floor" textAlignment="CENTER" textFill="#030303">
+                              <Label layoutX="75.0" layoutY="15.0" text="3rd floor" textAlignment="CENTER" textFill="#030303">
                                  <font>
                                     <Font size="33.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="66.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3300" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="125.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3301" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="184.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3302" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="243.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3303" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="301.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3304" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="360.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3305" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="419.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3306" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="477.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3307" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="536.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3308" />
-                              <TextField alignment="CENTER" editable="false" layoutX="36.0" layoutY="595.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3309" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="65.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3310" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="124.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3311" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="183.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3312" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="242.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3313" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="300.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3314" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="359.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3315" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="418.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3316" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="476.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3317" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="535.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightgreen;" text="3318" />
-                              <TextField alignment="CENTER" editable="false" layoutX="189.0" layoutY="594.0" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #FF3333;" text="3319" />
+                              <Button fx:id="C301" layoutX="42.0" layoutY="177.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="C301" />
+                              <Button fx:id="C302" layoutX="42.0" layoutY="235.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C302" />
+                              <Button fx:id="C303" layoutX="42.0" layoutY="294.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="C303" />
+                              <Button fx:id="C304" layoutX="42.0" layoutY="353.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="C304" />
+                              <Button fx:id="C308" layoutX="189.0" layoutY="296.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C308" />
+                              <Button fx:id="C307" layoutX="189.0" layoutY="237.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C307" />
+                              <Button fx:id="C306" layoutX="189.0" layoutY="178.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="C306" />
+                              <Button fx:id="C305" layoutX="42.0" layoutY="412.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C305" />
+                              <Button fx:id="C310" layoutX="189.0" layoutY="414.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="C310" />
+                              <Button fx:id="C309" layoutX="189.0" layoutY="355.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C309" />
+                              <Button fx:id="C311" layoutX="117.0" layoutY="480.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="C311" />
+                              <Button fx:id="btn_next" layoutX="205.0" layoutY="620.0" mnemonicParsing="false" onAction="#nextFloor" prefHeight="44.0" prefWidth="88.0" style="-fx-background-color: lightgreen;" text="Next">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
