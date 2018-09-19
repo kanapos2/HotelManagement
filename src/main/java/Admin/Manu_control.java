@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Manu_control {
 
     private String lastLogin = "";
-    private String[] roomName = {"A1","B2","C3"} ;
+    private String[] roomName = {"B2","C3"} ;
 
     @FXML
     private Label user ;
@@ -27,8 +27,7 @@ public class Manu_control {
     private Button btn_signout, btn_next ;
 
     @FXML
-    private Button A101,A102,A103,A104,A105,A106,A107,A108,A109,A110,A111,
-            B201,B202,B203,B204,B205,B206,B207,B208,B209,B210,B211,
+    private Button B201,B202,B203,B204,B205,B206,B207,B208,B209,B210,B211,
             C301,C302,C303,C304,C305,C306,C307,C308,C309,C310,C311;
 
 
