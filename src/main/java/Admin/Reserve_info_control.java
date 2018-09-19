@@ -12,8 +12,10 @@ import java.io.IOException;
 
 public class Reserve_info_control {
 
+    private String nowLogin = "--";
+
     @FXML
-    private Label roomnumber;
+    private Label roomnumber , test;
 
     @FXML
     private Button testback;
@@ -21,6 +23,13 @@ public class Reserve_info_control {
     @FXML
     public void roomNumber(String number) {
         roomnumber.setText(number);
+    }
+
+    @FXML
+    public void name(String nameLogin){
+        test.setText(nameLogin);
+        nowLogin = nameLogin;
+        System.out.println(nowLogin);
     }
 
 
@@ -37,6 +46,7 @@ public class Reserve_info_control {
             stage.setTitle("Reserve hotel");
 
             Manu_control controller = (Manu_control) loader.getController();
+            controller.setUserAfterClickRoom(nowLogin);
 
             stage.show();
 

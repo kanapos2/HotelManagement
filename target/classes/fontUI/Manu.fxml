@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Manu_control">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Manu_control">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -73,17 +74,12 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0">
+                  <Button layoutX="41.0" layoutY="251.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Out">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="42.0" layoutY="202.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check out">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="40.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check room">
+                  <Button layoutX="41.0" layoutY="302.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Room">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -93,30 +89,56 @@
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <AnchorPane layoutX="3.0" layoutY="89.0" prefHeight="57.0" prefWidth="308.0">
+                     <children>
+                        <Label layoutX="24.0" layoutY="16.0" text="Date-time" />
+                        <DatePicker layoutX="102.0" layoutY="11.0" />
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="42.0" layoutY="200.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Manu">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="353.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Room Plan">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="40.0" layoutY="404.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="History">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="40.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Report">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
                <content>
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="668.0" prefWidth="951.0">
                      <children>
-                        <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="667.0" prefWidth="310.0" style="-fx-border-color: black;">
+                        <AnchorPane fx:id="firstFloor" layoutX="1.0" layoutY="1.0" prefHeight="667.0" prefWidth="310.0" style="-fx-border-color: black;">
                            <children>
                               <Label layoutX="89.0" layoutY="17.0" text="1st floor" textAlignment="CENTER" textFill="#030303">
                                  <font>
                                     <Font size="33.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="A101" layoutX="32.0" layoutY="168.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A101" />
+                              <Button fx:id="A101" layoutX="32.0" layoutY="168.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A101" />
                               <Button fx:id="A102" layoutX="32.0" layoutY="226.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A102" />
                               <Button fx:id="A103" layoutX="32.0" layoutY="284.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A103" />
                               <Button fx:id="A104" layoutX="32.0" layoutY="343.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A104" />
-                              <Button fx:id="A105" layoutX="33.0" layoutY="402.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A105" />
+                              <Button fx:id="A105" layoutX="33.0" layoutY="402.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A105" />
                               <Button fx:id="A106" layoutX="184.0" layoutY="169.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A106" />
-                              <Button fx:id="A107" layoutX="184.0" layoutY="227.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A107" />
+                              <Button fx:id="A107" layoutX="184.0" layoutY="227.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A107" />
                               <Button fx:id="A108" layoutX="184.0" layoutY="286.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A108" />
                               <Button fx:id="A109" layoutX="184.0" layoutY="347.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A109" />
                               <Button fx:id="A110" layoutX="184.0" layoutY="406.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A110" />
-                              <Button fx:id="A111" layoutX="113.0" layoutY="480.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: #ff3333;" text="A111" />
+                              <Button fx:id="A111" layoutX="113.0" layoutY="480.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A111" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="310.0" layoutY="1.0" prefHeight="667.0" prefWidth="333.0" style="-fx-border-color: black;">

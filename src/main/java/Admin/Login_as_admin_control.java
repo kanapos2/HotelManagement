@@ -56,13 +56,15 @@ public class Login_as_admin_control {
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Manu.fxml"));
+            FXMLLoader loader_Manu = new FXMLLoader(getClass().getResource("/fontUI/Manu.fxml"));
+
             try {
-                stage.setScene(new Scene(loader.load(), 1280, 720));
+                stage.setScene(new Scene(loader_Manu.load(), 1280, 720));
                 stage.setTitle("Login hotel management for admin");
 
-                Manu_control controller = (Manu_control) loader.getController();
+                Manu_control controller = (Manu_control) loader_Manu.getController();
                 controller.setUser(username.getText());
+
 
                 stage.show();
 
@@ -92,6 +94,8 @@ public class Login_as_admin_control {
             e1.printStackTrace();
         }
     }
+
+
 
 
 
