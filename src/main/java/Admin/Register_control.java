@@ -38,6 +38,9 @@ public class Register_control {
     protected boolean checkBTNstate = false; // false ห้ามกด confirm
     protected int checkintsame = 0;
     protected boolean pwdPass = false; // เช็คพาสเวิด ห้ามมีอัขระ และมีตัวเลขอย่างน้อย 1 ตัว
+    protected int countBig = 0;
+    protected boolean letternotInt;
+    protected  String phoneText = "";
 
 
     @FXML
@@ -48,15 +51,17 @@ public class Register_control {
                 checkintsame ++;
                 break;
             }
-        }if (checkintsame >= 1){
+        }if (checkintsame >= 1 || countBig >= 1 || userNamefield.getText().equals("")){
             userNamefield.setStyle("-fx-border-color: red");
             btn_confirm.setDisable(true);
             userNamefield.clear();
             checkintsame = 0;
+            countBig = 0;
         }else{
             userNamefield.setStyle("-fx-border-color: green");
             btn_confirm.setDisable(false);
             checkBTNstate = true;
+            countBig = 0;
         }
         return checkBTNstate;
     }
@@ -75,6 +80,12 @@ public class Register_control {
         UserDBControl list = new UserDBControl(connect);
         listofUser = list.readUser();
         if (b.equals(check_btn)) {
+            String letterInput = userNamefield.getText().toLowerCase();
+            for (int i = 0; i < listofUser.size(); i++) {
+                if (letterInput.equals(listofUser.get(i).getUserName())){
+                    countBig++;
+                }
+            }
             checkSameuser();
         }
         if (b.equals(btn_confirm)){
@@ -85,30 +96,34 @@ public class Register_control {
                     addLetter ++;
                 }
             }
+            phoneText ="";
+            phoneCheck();
             if (passwd.length() >= 6 && current_passwd.equals(passwd) && isCheckBTNstate() == true && !accountID.getText().equals("") && !firstnameField.getText().equals("")
-                    && !lastnameField.getText().equals("")&& !phoneField.getText().equals("") && !emailField.getText().equals("") && addLetter == 1 && pwdPass == true) {
+                    &&accountID.getText().length() == 13&& !lastnameField.getText().equals("")&& !phoneField.getText().equals("") && !emailField.getText().equals("") && addLetter == 1 && pwdPass == true && letternotInt == true) {
                 Confirm();
                 checkBTNstate =false;
                 pwdPass = false;
-            }if (accountID.getText().equals("")){
+                letternotInt = false;
+            }if (accountID.getText().equals("") || accountID.getText().length() != 13 ){
                 accountID.setStyle("-fx-border-color: red");
             }if (firstnameField.getText().equals("")){
                 firstnameField.setStyle("-fx-border-color: red");
             }if (lastnameField.getText().equals("")){
                 lastnameField.setStyle("-fx-border-color: red");
-            }if (phoneField.getText().equals("")){
+            }if (phoneField.getText().equals("") || letternotInt == false){
                 phoneField.setStyle("-fx-border-color: red");
             }if (emailField.getText().equals("")) {
                 emailField.setStyle("-fx-border-color: red");
             }if (addLetter == 0){
                 emailField.setStyle("-fx-border-color: red");
-            }if (!accountID.getText().equals("")){
+            }if (!accountID.getText().equals("") && accountID.getText().length() == 13){
                 accountID.setStyle("-fx-border-color: green");
             }if (!firstnameField.getText().equals("")){
                 firstnameField.setStyle("-fx-border-color: green");
             }if (!lastnameField.getText().equals("")){
                 lastnameField.setStyle("-fx-border-color: green");
-            }if (!phoneField.getText().equals("")){
+
+            }if (!phoneField.getText().equals("") && letternotInt == true){
                 phoneField.setStyle("-fx-border-color: green");
             }if (!emailField.getText().equals("")){
                 emailField.setStyle("-fx-border-color: green");
@@ -126,6 +141,24 @@ public class Register_control {
         }
     }
 
+    public boolean phoneCheck(){ // เช็คเบอโทรต้องเป็นเลขเท่านัั้น
+        for (int i = 0; i < phoneField.getText().length() ; i++) {
+            if ((phoneField.getText().charAt(i) == '-') == false){
+                phoneText += phoneField.getText().charAt(i);
+            }
+        }
+        System.out.println(phoneText);
+        try {
+            int testNum = Integer.parseInt(phoneText);
+            letternotInt = true;
+        }
+        catch (NumberFormatException e){
+            System.out.println("cant pass");
+            letternotInt = false;
+        }
+        return letternotInt;
+    }
+
     @FXML
     public void cancel(ActionEvent event) {
         btn_cancle = (Button) event.getSource();
@@ -137,7 +170,7 @@ public class Register_control {
         DBConnector db = new DBConnector();
         Connection connection = db.openDatabase();
         UserDBControl userDBControl = new UserDBControl(connection);
-        User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneField.getText(),
+        User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneText,
                 emailField.getText(),password.getText());
         userDBControl.addUser(newUser);
         accountID.clear();
@@ -147,6 +180,7 @@ public class Register_control {
         emailField.clear();
         password.clear();
         current_password.clear();
+        phoneText = "";
         Stage comfirmStage = (Stage) btn_confirm.getScene().getWindow();
         toLoginPage(comfirmStage);
     }
@@ -190,5 +224,10 @@ public class Register_control {
             e1.printStackTrace();
         }
     }
+
+
+
+
+
 
 }
