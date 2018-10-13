@@ -16,6 +16,7 @@ public class Manu_control {
 
     private String lastLogin = "";
     private String[] roomName = {"B2","C3"} ;
+    private String typeRoom = "";
 
     @FXML
     private Label user ;
@@ -34,7 +35,7 @@ public class Manu_control {
 
     @FXML
     public void setUser(String name) {
-        user.setText(name);
+        user.setText("Login as : " + name);
         lastLogin = name;
 
 
@@ -43,7 +44,7 @@ public class Manu_control {
     @FXML
     public void setUserAfterClickRoom(String name){
         lastLogin = name;
-        user.setText(name);
+        user.setText("Login as : "+name);
     }
 
 
@@ -109,6 +110,26 @@ public class Manu_control {
                 Button newRoomNum = (Button) scene.lookup("#"+roomNum);
                 if (roomNumber.equals(newRoomNum)){
                     room = roomNum;
+                    if (roomNum.equals("B201") || roomNum.equals("C301")){
+                        typeRoom = "Family room";
+                    }
+                    else if (roomNum.equals("B202") || roomNum.equals("C302")) {
+                        typeRoom = "Presidential suite";
+                    }
+                    else if (roomNum.equals("B203") || roomNum.equals("C303")) {
+                        typeRoom = "Junior suite" ;
+                    }
+                    else if (roomNum.equals("B204") || roomNum.equals("B206") || roomNum.equals("B208") || roomNum.equals("B210") ||
+                            roomNum.equals("C304") || roomNum.equals("C306") || roomNum.equals("C308") || roomNum.equals("C310")) {
+                        typeRoom = "Super Deluxe";
+                    }
+                    else if (roomNum.equals("B205") || roomNum.equals("B207") || roomNum.equals("B209") ||
+                            roomNum.equals("C305") || roomNum.equals("C307") || roomNum.equals("C309")) {
+                        typeRoom = "Deluxe";
+                    }
+                    else {
+                        typeRoom = "Superior";
+                    }
                 }
             }
         }
@@ -124,6 +145,7 @@ public class Manu_control {
             Reserve_info_control controller = (Reserve_info_control) loader.getController();
             controller.roomNumber(room);
             controller.name(lastLogin);
+            controller.showTypeRoom(typeRoom);
 
             stage.show();
 

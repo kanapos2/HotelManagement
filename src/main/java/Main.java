@@ -8,7 +8,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fontUI/Login_as_admin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fontUI/Permission.fxml"));
         primaryStage.setTitle("Hotel Management");
         primaryStage.setScene(new Scene(root, 1280 , 720));
         primaryStage.show();

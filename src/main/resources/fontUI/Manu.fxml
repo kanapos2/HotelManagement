@@ -76,12 +76,12 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="251.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Out">
+                  <Button layoutX="41.0" layoutY="202.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Out">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="302.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Room">
+                  <Button layoutX="41.0" layoutY="253.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Room">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -94,25 +94,20 @@
                   <AnchorPane layoutX="3.0" layoutY="89.0" prefHeight="57.0" prefWidth="308.0">
                      <children>
                         <Label layoutX="24.0" layoutY="16.0" text="Date-time" />
-                        <DatePicker layoutX="102.0" layoutY="11.0" />
+                        <DatePicker editable="false" layoutX="102.0" layoutY="11.0" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="42.0" layoutY="200.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Manu">
+                  <Button layoutX="41.0" layoutY="304.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Room Plan">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="353.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Room Plan">
+                  <Button layoutX="40.0" layoutY="355.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="History">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="40.0" layoutY="404.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="History">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="40.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Report">
+                  <Button layoutX="40.0" layoutY="406.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Report">
                      <font>
                         <Font size="24.0" />
                      </font>
