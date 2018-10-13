@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Manu_control">
    <children>
@@ -74,12 +76,12 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="251.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Out">
+                  <Button layoutX="41.0" layoutY="202.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Out">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="302.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Room">
+                  <Button layoutX="41.0" layoutY="253.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Check Room">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -92,25 +94,20 @@
                   <AnchorPane layoutX="3.0" layoutY="89.0" prefHeight="57.0" prefWidth="308.0">
                      <children>
                         <Label layoutX="24.0" layoutY="16.0" text="Date-time" />
-                        <DatePicker layoutX="102.0" layoutY="11.0" />
+                        <DatePicker editable="false" layoutX="102.0" layoutY="11.0" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="42.0" layoutY="200.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Manu">
+                  <Button layoutX="41.0" layoutY="304.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Room Plan">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="353.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Room Plan">
+                  <Button layoutX="40.0" layoutY="355.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="History">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="40.0" layoutY="404.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="History">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="40.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Report">
+                  <Button layoutX="40.0" layoutY="406.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Report">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -128,17 +125,24 @@
                                     <Font size="33.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="A101" layoutX="32.0" layoutY="168.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A101" />
-                              <Button fx:id="A102" layoutX="32.0" layoutY="226.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A102" />
-                              <Button fx:id="A103" layoutX="32.0" layoutY="284.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A103" />
-                              <Button fx:id="A104" layoutX="32.0" layoutY="343.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A104" />
-                              <Button fx:id="A105" layoutX="33.0" layoutY="402.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A105" />
-                              <Button fx:id="A106" layoutX="184.0" layoutY="169.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A106" />
-                              <Button fx:id="A107" layoutX="184.0" layoutY="227.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A107" />
-                              <Button fx:id="A108" layoutX="184.0" layoutY="286.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A108" />
-                              <Button fx:id="A109" layoutX="184.0" layoutY="347.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A109" />
-                              <Button fx:id="A110" layoutX="184.0" layoutY="406.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A110" />
-                              <Button fx:id="A111" layoutX="113.0" layoutY="480.0" mnemonicParsing="false" onAction="#reserveRoom" prefHeight="52.0" prefWidth="78.0" style="-fx-background-color: lightblue;" text="A111" />
+                              <TextField editable="false" layoutX="45.0" layoutY="111.0" prefHeight="63.0" prefWidth="225.0" />
+                              <TextField editable="false" layoutX="45.0" layoutY="503.0" prefHeight="63.0" prefWidth="225.0" />
+                              <TextField editable="false" layoutX="29.0" layoutY="236.0" prefHeight="196.0" prefWidth="73.0" />
+                              <Text fill="#21a3da" layoutX="84.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reception">
+                                 <font>
+                                    <Font size="31.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#9342b9" layoutX="59.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fitness Room">
+                                 <font>
+                                    <Font size="31.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#23d95f" layoutX="-18.0" layoutY="344.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dining Room">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="310.0" layoutY="1.0" prefHeight="667.0" prefWidth="333.0" style="-fx-border-color: black;">
