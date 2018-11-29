@@ -1,5 +1,10 @@
 package Admin;
 
+import Model.Room;
+import Model.User;
+import Store.DBConnector;
+import Store.RoomDBConnector;
+import Store.UserDBControl;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Reserve_info_control {
 
@@ -60,6 +67,14 @@ public class Reserve_info_control {
     }
 
     @FXML
+    public void handleComfirm(ActionEvent e){
+        if (e.getSource().equals(confirm)){
+            checkRoomnumber();
+            back(e);
+        }
+    }
+
+    @FXML
     public void back(ActionEvent event){
         confirm = (Button) event.getSource();
 
@@ -80,4 +95,32 @@ public class Reserve_info_control {
             e1.printStackTrace();
         }
     }
+
+    public void checkRoomnumber(){
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        ArrayList<Room> roomList;
+        String nowRoom = roomnumber.getText();
+        roomList = roomDBConnector.readRoom();
+        for (int i = 0; i < roomList.size() ; i++) {
+            if (roomList.get(i).getRoomNumber().equals(nowRoom)){
+                Room now = roomList.get(i);
+                if (roomList.get(i).getRoomStatus() == 0){
+                    updateRoomStatus(now);
+                    now.setRoomStatus(1);
+                }else if (roomList.get(i).getRoomStatus() == 1){
+                    System.out.println("Room not available");
+                }
+            }
+        }
+    }
+
+    public void updateRoomStatus(Room room){
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        roomDBConnector.updateRoom(room,1);
+    }
+
 }
