@@ -1,0 +1,142 @@
+static protected ArrayList <String> userName;
+
+    public Database() {
+        this.userName = new ArrayList<>();
+    }
+
+    public void addDataRegister(String user,String passwd){
+        String userCombinepasswd = user+passwd;
+        userName.add(userCombinepasswd);
+        System.out.println (getUserName());
+    }
+
+    public static ArrayList<String> getUserName() {
+        return userName;
+    }
+
+    @Override
+    public String toString() {
+        return "Database{" + "userName=" + userName + '}';
+    }
+
+
+
+
+    /////////////////////
+
+    private Connection conn;
+
+        public void openDatabase(){
+            try{
+                Class.forName("org.sqlite.JDBC") ;
+                String dbURL = "jdbc:sqlite:Product.db";
+                conn = DriverManager.getConnection(dbURL);
+                if(conn != null){
+                    System.out.println("Connect to database!!!");
+                }
+            }
+            catch (ClassNotFoundException ex){
+                ex.printStackTrace();
+            }
+            catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+
+        public void closeDatabase(){
+            try{
+                conn.close();
+                System.out.println("Close Database!!!");
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
+        }
+        
+        
+        
+---------------------------------------------------------------------------
+
+package Store;
+
+import Model.User;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.*;
+
+public class Database {
+    Connection connect = null;
+    Statement stmt = null;
+
+    public void openDatabase() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String dbURL = "jdbc:sqlite:hoteldatabase.db";
+            if(connect == null) {
+                connect = DriverManager.getConnection(dbURL);
+            }
+            if (connect != null) {
+                System.out.println("Connect to database!!!");
+            }
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void closeDatabase() {
+        try {
+            connect.close();
+            connect = null;
+            System.out.println("Close Database!!!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void addUser(User user){
+        try{
+            String query = "INSERT INTO user_data ('ID','username','firstname','lastname','email','password') VALUES ('"+user.getiDentify()+"','"+user.getUserName()+"','"+user.getFirstName()+"','"+user.getLastName()+"','"+user.geteMail()+"','"+user.getPassWord()+"')";
+            stmt = connect.createStatement();
+            stmt.executeQuery(query);
+            readUser();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<User> readUser(){
+        ObservableList<User> listItem = FXCollections.observableArrayList();
+        try{
+            String query = "Select * From Customer";
+            Statement statement = connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Integer ID = resultSet.getInt(1);
+                String username = resultSet.getString(2);
+                String firstname = resultSet.getString(3);
+                String lastname = resultSet.getString(4);
+                String email = resultSet.getString(5);
+                String password = resultSet.getString(6);
+
+                listItem.add(new User(new SimpleIntegerProperty(ID),new SimpleStringProperty(username),new SimpleStringProperty(firstname),
+                        new SimpleStringProperty(lastname), new SimpleStringProperty(email),new SimpleStringProperty(password)));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return listItem;
+    }
+
+
+
+}
+
+
+
+

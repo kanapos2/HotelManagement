@@ -3,7 +3,13 @@ package Model;
 public class Room {
     private String roomNumber ;
     private int roomStatus;
+
     private String firstName;
+    private String lastName;
+    private String passport;
+    private String sex;
+    private String email;
+    private String phoneNumber;
 
     public Room(String roomNumber, int roomStatus) {
         this.roomNumber = roomNumber;
@@ -11,6 +17,15 @@ public class Room {
     }
 
     public Room() {
+    }
+
+    public void addInformationToDb(String firstName, String lastName, String passport, String sex, String email, String phoneNumber){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passport = passport;
+        this.sex = sex;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getRoomNumber() {
@@ -29,6 +44,53 @@ public class Room {
         this.roomStatus = roomStatus;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     @Override
     public String toString() {

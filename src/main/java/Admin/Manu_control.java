@@ -51,7 +51,9 @@ public class Manu_control {
 
     @FXML
     public void start(){
-        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
 
         System.out.println("@@@@@@@@@");
 
