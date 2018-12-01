@@ -110,9 +110,7 @@ public class Reserve_info_control {
     }
 
     public void checkRoomnumber(){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
         ArrayList<Room> roomList;
         String nowRoom = roomnumber.getText();
         roomList = roomDBConnector.readRoom();
@@ -130,9 +128,7 @@ public class Reserve_info_control {
     }
 
     public void updateRoomStatus(Room room){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
         roomDBConnector.updateRoom(room,1);
     }
 

@@ -51,9 +51,7 @@ public class Manu_control {
 
     @FXML
     public void start(){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
 
         System.out.println("@@@@@@@@@");
 
@@ -151,9 +149,7 @@ public class Manu_control {
         Button roomNumber = (Button) event.getSource();
         String room = "" ;
 
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
         roomDBConnector.readRoom();
 
         Scene scene = firstFloor.getScene();

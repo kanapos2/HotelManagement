@@ -51,10 +51,7 @@ public class Forth_Seven_Floor_control {
 
     @FXML
     public void start(){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
-
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
         System.out.println("@@@@@@@@@");
 
 
