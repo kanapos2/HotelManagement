@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -32,6 +33,9 @@ public class Manu_control {
     private String lastLogin = "";
     private String[] roomName = {"B2","C3"} ;
     private String typeRoom = "";
+
+    @FXML
+    private VBox vBox;
 
     private int second , hour , minute;
 
@@ -270,6 +274,8 @@ public class Manu_control {
                 }
                 else {
                     Stage stage = new Stage();
+
+                    vBox.setDisable(true);
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/CheckOut.fxml"));
                     try {
