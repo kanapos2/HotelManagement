@@ -32,7 +32,7 @@ public class Reserve_info_control {
 
 
     @FXML
-    private Label roomnumber , test , typeRoom;
+    protected Label roomnumber , test , typeRoom , totalPriceLabel;
 
     @FXML
     private Button confirm , cancel;
@@ -42,11 +42,15 @@ public class Reserve_info_control {
 
     private String numberOfRoom = "";
 
+    private int roomPrice ;
+    private int calIn,calOut;
+    private int totalPrice;
+
     @FXML
-    public void roomNumber(String number) {
+    public void roomNumber(String number,int price) {
         roomnumber.setText(number);
         numberOfRoom = number;
-
+        roomPrice = price;
         boxMr.setSelected(true);
         if (boxMr.isSelected()) {
             System.out.println(boxMr.getText());
@@ -55,7 +59,38 @@ public class Reserve_info_control {
             System.out.println("-!-!-!-!-!-!-");
         }
 
+        chIn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                calIn  = chIn.getValue().getDayOfMonth();
+                try {
+                    int test = chOut.getValue().getDayOfMonth();
+                    convertPrice(calIn,test);
+                }
+                catch (NullPointerException e){
+                    e.getStackTrace();
+                }
 
+            }
+        });
+        chOut.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                calOut = chOut.getValue().getDayOfMonth();
+                convertPrice(calIn,calOut);
+            }
+        });
+    }
+
+
+
+    public void convertPrice(int in,int out){
+        if (out > in){
+            totalPrice=0;
+            totalPrice = (out-in)*roomPrice;
+            System.out.println(totalPrice);
+            totalPriceLabel.setText(String.valueOf(totalPrice));
+        }else return;
     }
 
     @FXML

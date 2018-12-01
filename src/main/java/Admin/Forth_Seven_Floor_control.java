@@ -95,6 +95,7 @@ public class Forth_Seven_Floor_control {
     public void reserveRoom(ActionEvent event) {
         Button roomNumber = (Button) event.getSource();
         String room = "";
+        int roomPrice = 0;
 
         String roomNum = "" ;
         Scene scene = thirdFloor.getScene();
@@ -110,27 +111,33 @@ public class Forth_Seven_Floor_control {
                     room = roomNum;
                     if (roomNum.equals("D401") || roomNum.equals("E501") || roomNum.equals("F601") || roomNum.equals("G701")){
                         typeRoom = "Family room";
+                        roomPrice = 9000;
                     }
                     else if (roomNum.equals("D402") || roomNum.equals("E502") || roomNum.equals("F602") || roomNum.equals("G702")){
                         typeRoom = "Presidential suite";
+                        roomPrice = 12000;
                     }
                     else if (roomNum.equals("D403") || roomNum.equals("E503") || roomNum.equals("F603") || roomNum.equals("G703")){
                         typeRoom = "Junior suite";
+                        roomPrice = 6500;
                     }
                     else if (roomNum.equals("D404") || roomNum.equals("D406") || roomNum.equals("D408") || roomNum.equals("D410") ||
                             roomNum.equals("E504") || roomNum.equals("E506") || roomNum.equals("E508") || roomNum.equals("E510") ||
                             roomNum.equals("F604") || roomNum.equals("F606") || roomNum.equals("F608") || roomNum.equals("F610") ||
                             roomNum.equals("G704") || roomNum.equals("G706") || roomNum.equals("G708") || roomNum.equals("G710"))  {
                         typeRoom = "Super Deluxe";
+                        roomPrice = 5500;
                     }
                     else if (roomNum.equals("D405") || roomNum.equals("D407") || roomNum.equals("D409") ||
                             roomNum.equals("E505") || roomNum.equals("E507") || roomNum.equals("E509") ||
                             roomNum.equals("F605") || roomNum.equals("F607") || roomNum.equals("F609") ||
                             roomNum.equals("G705") || roomNum.equals("G707") || roomNum.equals("G709")) {
                         typeRoom = "Deluxe";
+                        roomPrice = 4600;
                     }
                     else {
                         typeRoom = "Superior" ;
+                        roomPrice = 4000;
                     }
                 }
             }
@@ -145,7 +152,7 @@ public class Forth_Seven_Floor_control {
                 stage.setTitle("Reserve info");
 
                 Reserve_info_control controller = (Reserve_info_control) loader.getController();
-                controller.roomNumber(room);
+                controller.roomNumber(room,roomPrice);
                 controller.name(lastLogin);
                 controller.showTypeRoom(typeRoom);
 

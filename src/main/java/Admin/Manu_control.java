@@ -7,6 +7,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -181,6 +183,7 @@ public class Manu_control {
     public void reserveRoom(ActionEvent event){
         Button roomNumber = (Button) event.getSource();
         String room = "" ;
+        int roomPrice = 0;
 
         DBConnector db = new DBConnector();
         Connection connection = db.openDatabase();
@@ -196,35 +199,41 @@ public class Manu_control {
                 else {
                     roomNum = s + i ;
                 }
-                numberOfRoom.add(roomNum);
+                //numberOfRoom.add(roomNum);
 
                 Button newRoomNum = (Button) scene.lookup("#"+roomNum);
                 if (roomNumber.equals(newRoomNum)){
                     if (roomNum.equals("B201") || roomNum.equals("C301")){
                         typeRoom = "Family room";
                         room = newRoomNum.getText();
+                        roomPrice = 9000;
                     }
                     else if (roomNum.equals("B202") || roomNum.equals("C302")) {
                         typeRoom = "Presidential suite";
                         room = newRoomNum.getText();
+                        roomPrice = 12000;
                     }
                     else if (roomNum.equals("B203") || roomNum.equals("C303")) {
                         typeRoom = "Junior suite" ;
                         room = newRoomNum.getText();
+                        roomPrice = 6500;
                     }
                     else if (roomNum.equals("B204") || roomNum.equals("B206") || roomNum.equals("B208") || roomNum.equals("B210") ||
                             roomNum.equals("C304") || roomNum.equals("C306") || roomNum.equals("C308") || roomNum.equals("C310")) {
                         typeRoom = "Super Deluxe";
                         room = newRoomNum.getText();
+                        roomPrice = 5500;
                     }
                     else if (roomNum.equals("B205") || roomNum.equals("B207") || roomNum.equals("B209") ||
                             roomNum.equals("C305") || roomNum.equals("C307") || roomNum.equals("C309")) {
                         typeRoom = "Deluxe";
                         room = newRoomNum.getText();
+                        roomPrice = 4600;
                     }
                     else {
                         typeRoom = "Superior";
                         room = newRoomNum.getText();
+                        roomPrice = 4000;
                     }
                 }
             }
@@ -240,6 +249,7 @@ public class Manu_control {
                 System.out.println("----------- DEBUG ----------");
                 if (s.getRoomStatus()==0){
                     Stage stage = (Stage) roomNumber.getScene().getWindow();
+                    System.out.println(roomPrice);
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Reserve_info.fxml"));
                     try {
@@ -247,7 +257,7 @@ public class Manu_control {
                         stage.setTitle("Reserve info");
 
                         Reserve_info_control controller = (Reserve_info_control) loader.getController();
-                        controller.roomNumber(room);
+                        controller.roomNumber(room,roomPrice);
                         controller.name(lastLogin);
                         controller.showTypeRoom(typeRoom);
 
@@ -259,15 +269,14 @@ public class Manu_control {
 
                 }
                 else {
-                    Stage stage = (Stage) roomNumber.getScene().getWindow();
+                    Stage stage = new Stage();
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/CheckOut.fxml"));
                     try {
-                        stage.setScene(new Scene(loader.load(), 1280, 720));
+                        stage.setScene(new Scene(loader.load(), 580, 400));
                         stage.setTitle("Reserve info");
-
                         CheckOut_control controller = (CheckOut_control) loader.getController();
-
+                        System.out.println(s.getRoomNumber());
                         stage.show();
 
                     } catch (IOException e1) {
