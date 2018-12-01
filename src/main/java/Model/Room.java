@@ -117,15 +117,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "roomNumber='" + roomNumber + '\'' +
-                ", roomStatus=" + roomStatus +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", passport='" + passport + '\'' +
-                ", sex='" + sex + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", checkIn='" + checkIn + '\'' +
-                ", checkOut='" + checkOut + '\'' +
+                ", roomStatus='" + roomStatus + '\'' +
                 '}';
     }
 }

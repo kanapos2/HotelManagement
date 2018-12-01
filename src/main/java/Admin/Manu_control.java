@@ -3,6 +3,7 @@ package Admin;
 import Model.Room;
 import Store.DBConnector;
 import Store.RoomDBConnector;
+import Store.UserDBControl;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -27,6 +29,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 public class Manu_control {
 
@@ -40,13 +43,13 @@ public class Manu_control {
     private int second , hour , minute;
 
     @FXML
-    private Label user , timeZone ,datefield ;
+    private Label user , timeZone ,datefield  ;
 
     @FXML
     private AnchorPane firstFloor ;
 
     @FXML
-    private Button btn_signout, btn_next ;
+    private Button btn_signout, btn_next , btn_information ;
 
     @FXML
     private Button B201,B202,B203,B204,B205,B206,B207,B208,B209,B210,B211,
@@ -243,6 +246,7 @@ public class Manu_control {
             }
         }
 
+
         for (Room s : roomDBConnector.readRoom()){
             if (room.equals(s.getRoomNumber())){
                 System.out.println("----------- DEBUG ----------");
@@ -272,16 +276,6 @@ public class Manu_control {
 
                 }
                 else {
-//                    DBConnector data = new DBConnector();
-//                    Connection connect = data.openDatabase();
-//                    RoomDBConnector roomCheckdatabase = new RoomDBConnector(connect);
-//                    Room chooseRoom = null;
-//                    for (Room cusRoom:roomCheckdatabase.readRoom()) {
-//                        if (cusRoom.getRoomNumber().equals(s.getRoomNumber())){
-//                            chooseRoom = cusRoom;
-//                            break;
-//                        }
-//                    }
                     Stage stage = new Stage();
 
                     vBox.setDisable(true);
@@ -291,22 +285,77 @@ public class Manu_control {
                         stage.setScene(new Scene(loader.load(), 580, 400));
                         stage.setTitle("Reserve info");
                         CheckOut_control controller = (CheckOut_control) loader.getController();
-                        System.out.println(s.getRoomNumber());
-                        controller.loginAs.setText("Login as : " + lastLogin);
-                        controller.roomnumber.setText(s.getRoomNumber());
-                        controller.typeRoom.setText(typeRoom);
                         controller.setNowRoom(s);
                         controller.setManu_control(this);
+
                         stage.show();
 
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
+
                 }
             }
         }
+    }
 
 
+    @FXML
+    public void informationPage(ActionEvent event){
+        btn_information = (Button) event.getSource();
+
+        boolean status = true;
+        final int[] numberCount = new int[1];
+
+        while (status){
+            DBConnector db = new DBConnector();
+            Connection connection = db.openDatabase();
+            RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+
+
+            TextInputDialog dialog = new TextInputDialog();
+
+            dialog.setHeaderText("Enter your room number");
+            dialog.setContentText("Number:");
+
+            Optional<String> result = dialog.showAndWait();
+
+            result.ifPresent(name -> {
+                for (Room s : roomDBConnector.readRoom()){
+                    if (name.equals(s.getRoomNumber()) && s.getRoomStatus()==1){
+                        System.out.println("-------------Correct----------");
+                        numberCount[0] = 1;
+                    }
+                }
+            });
+
+            if (numberCount[0]==1){
+                status = false;
+            }
+
+        }
+
+        Stage stage = new Stage();
+
+        vBox.setDisable(true);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Information.fxml"));
+        try {
+            stage.setScene(new Scene(loader.load(), 580, 400));
+            stage.setTitle("Information");
+            Information_control controller = (Information_control) loader.getController();
+            controller.setManu_control(this);
+            stage.show();
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    public void openVbox(){
+        vBox.setDisable(false);
     }
 
 }

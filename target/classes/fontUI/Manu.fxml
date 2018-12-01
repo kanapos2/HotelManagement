@@ -75,7 +75,7 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="41.0" layoutY="202.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="234.0" text="Information">
+                  <Button fx:id="btn_information" layoutX="41.0" layoutY="202.0" mnemonicParsing="false" onAction="#informationPage" prefHeight="45.0" prefWidth="234.0" text="Information">
                      <font>
                         <Font size="24.0" />
                      </font>
