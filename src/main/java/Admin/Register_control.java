@@ -160,10 +160,20 @@ public class Register_control {
     }
 
     @FXML
-    public void cancel(ActionEvent event) {
+    public void cancle(ActionEvent event) {
         btn_cancle = (Button) event.getSource();
-        Stage cancleStage = (Stage) btn_cancle.getScene().getWindow();
-        toLoginPage(cancleStage);
+        Stage stage = (Stage) btn_cancle.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Permission.fxml")) ;
+        try {
+            stage.setScene(new Scene(loader.load(),1280,720));
+            stage.setTitle("Hotel Management");
+
+            Permission_control controller = (Permission_control) loader.getController();
+
+            stage.show();
+        } catch (IOException e1){
+            e1.printStackTrace();
+        }
     }
 
     public void Confirm(){ // Stored data and back to log-in page

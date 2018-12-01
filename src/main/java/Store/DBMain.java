@@ -11,18 +11,32 @@ import java.util.ArrayList;
 
 public class DBMain {
     public static void main(String[] args) throws SQLException {
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        UserDBControl userDBControl = new UserDBControl(connection);
-        RoomDBConnector rcb = new RoomDBConnector(connection);
 
-        Room r1 = new Room("B211",0);
-        System.out.println(rcb.addRoom(r1));
 
+//        Room r1 = new Room("B211",0);
+//        System.out.println(rcb.addRoom(r1));
+
+//        for (Room s : rcb.readRoom()){
+//            System.out.println(s);
+//        }
 //        ArrayList<Room> roomList = rcb.readRoom();
 //        for (Room i:roomList) {
 //            System.out.println(i);
+////
+//        String c = "G7";
+//        for (int i=1 ; i<=11 ; i++) {
+//            DBConnector db = new DBConnector();
+//            Connection connection = db.openDatabase();
+//            UserDBControl userDBControl = new UserDBControl(connection);
+//            RoomDBConnector rcb = new RoomDBConnector(connection);
+//            if (i<10) {
+//                rcb.addRoom(new Room(c+"0"+i,0));
+//            }
+//            else {
+//                rcb.addRoom(new Room(c+i,0));
+//            }
 //
+//        }
 //        }
 
 //        User user = new User("000","admin","Admin",

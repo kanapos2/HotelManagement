@@ -21,16 +21,29 @@ public class Reserve_info_control {
 
     private String nowLogin = "--";
 
+
     @FXML
     private Label roomnumber , test , typeRoom;
 
     @FXML
     private Button confirm , cancel;
 
+    @FXML
+    private CheckBox boxMr , boxMrs , boxMiss;
 
     @FXML
     public void roomNumber(String number) {
         roomnumber.setText(number);
+
+        boxMr.setSelected(true);
+        if (boxMr.isSelected()) {
+            System.out.println(boxMr.getText());
+        }
+        else {
+            System.out.println("-!-!-!-!-!-!-");
+        }
+
+
     }
 
     @FXML
@@ -70,12 +83,12 @@ public class Reserve_info_control {
     public void handleComfirm(ActionEvent e){
         if (e.getSource().equals(confirm)){
             checkRoomnumber();
-            back(e);
+            clickConfirmToBack(e);
         }
     }
 
     @FXML
-    public void back(ActionEvent event){
+    public void clickConfirmToBack(ActionEvent event){
         confirm = (Button) event.getSource();
 
         Stage stage = (Stage) confirm.getScene().getWindow();

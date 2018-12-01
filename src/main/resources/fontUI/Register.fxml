@@ -101,7 +101,7 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btn_cancel" layoutX="816.0" layoutY="661.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #ff2f38; -fx-border-color: black;" text="Cancel">
+      <Button fx:id="btn_cancle" layoutX="816.0" layoutY="661.0" mnemonicParsing="false" onAction="#cancle" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #ff2f38; -fx-border-color: black;" text="Cancel">
          <font>
             <Font size="25.0" />
          </font>

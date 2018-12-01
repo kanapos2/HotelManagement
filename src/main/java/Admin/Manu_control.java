@@ -1,5 +1,8 @@
 package Admin;
 
+import Model.Room;
+import Store.DBConnector;
+import Store.RoomDBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Manu_control {
 
@@ -32,19 +37,69 @@ public class Manu_control {
             C301,C302,C303,C304,C305,C306,C307,C308,C309,C310,C311;
 
 
+    private ArrayList<String> numberOfRoom = new ArrayList<>();
 
     @FXML
     public void setUser(String name) {
         user.setText("Login as : " + name);
         lastLogin = name;
 
+        start();
+
 
     }
+
+    @FXML
+    public void start(){
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+
+        System.out.println("@@@@@@@@@");
+
+
+        String roomNum = "" ;
+        for (String s : roomName) {
+            for (int i = 1; i <= 11; i++) {
+                if (i < 10) {
+                    roomNum = s + "0" + i;
+                } else {
+                    roomNum = s + i;
+                }
+                numberOfRoom.add(roomNum);
+            }
+        }
+
+
+
+        Scene scene = firstFloor.getScene();
+        for (Room s : roomDBConnector.readRoom()){
+//            System.out.println(numberOfRoom);
+            for (int i=0 ;i<numberOfRoom.size() ; i++){
+//                System.out.println("OUTSIDE");
+                if (s.getRoomNumber().equals(numberOfRoom.get(i))){
+//                    System.out.println("DEBUG");
+                    Button newRoomNum = (Button) scene.lookup("#"+numberOfRoom.get(i));
+                    if (s.getRoomStatus()==1){
+                        newRoomNum.setStyle("-fx-background-color: #ff3333");
+                    }
+                    else {
+                        newRoomNum.setStyle("-fx-background-color: lightblue");
+                    }
+                }
+            }
+        }
+
+    }
+
+
 
     @FXML
     public void setUserAfterClickRoom(String name){
         lastLogin = name;
         user.setText("Login as : "+name);
+
+        start();
     }
 
 
@@ -96,6 +151,11 @@ public class Manu_control {
         Button roomNumber = (Button) event.getSource();
         String room = "" ;
 
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        roomDBConnector.readRoom();
+
         Scene scene = firstFloor.getScene();
         String roomNum = "" ;
         for (String s : roomName){
@@ -106,6 +166,7 @@ public class Manu_control {
                 else {
                     roomNum = s + i ;
                 }
+                numberOfRoom.add(roomNum);
 
                 Button newRoomNum = (Button) scene.lookup("#"+roomNum);
                 if (roomNumber.equals(newRoomNum)){
