@@ -3,6 +3,9 @@ package Admin;
 import Model.Room;
 import Store.DBConnector;
 import Store.RoomDBConnector;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +15,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Manu_control {
 
@@ -23,8 +31,10 @@ public class Manu_control {
     private String[] roomName = {"B2","C3"} ;
     private String typeRoom = "";
 
+    private int second , hour , minute;
+
     @FXML
-    private Label user ;
+    private Label user , timeZone ,datefield ;
 
     @FXML
     private AnchorPane firstFloor ;
@@ -46,8 +56,29 @@ public class Manu_control {
 
         start();
 
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String time = now.format(formatter);
+            timeZone.setText(time);
+
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+
+        Date today = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMM YYYY");
+        datefield.setText(format.format(today));
+        System.out.println(format.format(today));
+
+
+
 
     }
+
+
 
     @FXML
     public void start(){

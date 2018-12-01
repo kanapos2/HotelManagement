@@ -10,6 +10,8 @@ public class Room {
     private String sex;
     private String email;
     private String phoneNumber;
+    private String checkIn;
+    private String checkOut;
 
     public Room(String roomNumber, int roomStatus) {
         this.roomNumber = roomNumber;
@@ -19,13 +21,16 @@ public class Room {
     public Room() {
     }
 
-    public void addInformationToDb(String firstName, String lastName, String passport, String sex, String email, String phoneNumber){
+    public Room(String firstName, String lastName, String passport, String sex, String email, String phoneNumber,
+                String checkIn , String checkOut){
         this.firstName = firstName;
         this.lastName = lastName;
         this.passport = passport;
         this.sex = sex;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
     public String getRoomNumber() {
@@ -90,6 +95,22 @@ public class Room {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public String getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
 
     @Override

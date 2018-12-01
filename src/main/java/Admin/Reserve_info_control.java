@@ -21,6 +21,15 @@ public class Reserve_info_control {
 
     private String nowLogin = "--";
 
+    @FXML
+    private TextField tf_FirstName , tf_LastName , tf_Passport , tf_Email , tf_PhoneNumber;
+
+    @FXML
+    private RadioButton rd_sex;
+
+    @FXML
+    private DatePicker chIn , chOut;
+
 
     @FXML
     private Label roomnumber , test , typeRoom;
@@ -31,9 +40,12 @@ public class Reserve_info_control {
     @FXML
     private CheckBox boxMr , boxMrs , boxMiss;
 
+    private String numberOfRoom = "";
+
     @FXML
     public void roomNumber(String number) {
         roomnumber.setText(number);
+        numberOfRoom = number;
 
         boxMr.setSelected(true);
         if (boxMr.isSelected()) {
@@ -61,6 +73,7 @@ public class Reserve_info_control {
     @FXML
     public void cancelReserve(ActionEvent event){
         cancel = (Button) event.getSource();
+
         Stage stage = (Stage) confirm.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Manu.fxml"));
@@ -82,7 +95,7 @@ public class Reserve_info_control {
     @FXML
     public void handleComfirm(ActionEvent e){
         if (e.getSource().equals(confirm)){
-            checkRoomnumber();
+//            checkRoomnumber();
             clickConfirmToBack(e);
         }
     }
@@ -90,6 +103,32 @@ public class Reserve_info_control {
     @FXML
     public void clickConfirmToBack(ActionEvent event){
         confirm = (Button) event.getSource();
+
+
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+
+        if (rd_sex.getText().equals("Male")){
+            Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
+                    tf_Passport.getText(), rd_sex.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
+            room.setRoomNumber(numberOfRoom);
+            System.out.println(roomDBConnector.addInformation(room,1));
+
+        }
+        else {
+            Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
+                    tf_Passport.getText(), rd_sex.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
+            room.setRoomNumber(numberOfRoom);
+            System.out.println(roomDBConnector.addInformation(room,1));
+
+        }
+
+
+
+
+
+
 
         Stage stage = (Stage) confirm.getScene().getWindow();
 
@@ -109,25 +148,25 @@ public class Reserve_info_control {
         }
     }
 
-    public void checkRoomnumber(){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
-        ArrayList<Room> roomList;
-        String nowRoom = roomnumber.getText();
-        roomList = roomDBConnector.readRoom();
-        for (int i = 0; i < roomList.size() ; i++) {
-            if (roomList.get(i).getRoomNumber().equals(nowRoom)){
-                Room now = roomList.get(i);
-                if (roomList.get(i).getRoomStatus() == 0){
-                    updateRoomStatus(now);
-                    now.setRoomStatus(1);
-                }else if (roomList.get(i).getRoomStatus() == 1){
-                    System.out.println("Room not available");
-                }
-            }
-        }
-    }
+//    public void checkRoomnumber(){
+//        DBConnector db = new DBConnector();
+//        Connection connection = db.openDatabase();
+//        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+//        ArrayList<Room> roomList;
+//        String nowRoom = roomnumber.getText();
+//        roomList = roomDBConnector.readRoom();
+//        for (int i = 0; i < roomList.size() ; i++) {
+//            if (roomList.get(i).getRoomNumber().equals(nowRoom)){
+//                Room now = roomList.get(i);
+//                if (roomList.get(i).getRoomStatus() == 0){
+//                    updateRoomStatus(now);
+//                    now.setRoomStatus(1);
+//                }else if (roomList.get(i).getRoomStatus() == 1){
+//                    System.out.println("Room not available");
+//                }
+//            }
+//        }
+//    }
 
     public void updateRoomStatus(Room room){
         DBConnector db = new DBConnector();

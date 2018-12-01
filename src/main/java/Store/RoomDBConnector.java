@@ -18,7 +18,7 @@ public class RoomDBConnector {
         boolean addResult = false;
         try {
             Room newRoom = room;
-            String sqlText = "INSERT INTO room_status VALUES (?,?)";
+            String sqlText = "INSERT INTO room_status VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
             prepare.setString(1,newRoom.getRoomNumber());
             prepare.setInt(2,newRoom.getRoomStatus());
@@ -35,25 +35,31 @@ public class RoomDBConnector {
         return addResult;
     }
 
-    public boolean addInformation(Room room){
-        boolean addResult = false;
-        try {
-            Room newRoom = room;
-            String sqlText = "INSERT INTO room_status VALUES (?,?)";
+    public boolean addInformation(Room room,int newStatus){
+        boolean updateResult = false;
+        try{
+            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=?,LastName=?,Passport=?,Sex=?,Email=?,PhoneNumber=?,CheckIn=?,CheckOut=? WHERE roomNumber=?";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
-            prepare.setString(1,newRoom.getRoomNumber());
-            prepare.setInt(2,newRoom.getRoomStatus());
+            prepare.setInt(1,newStatus);
+            prepare.setString(2,room.getFirstName());
+            prepare.setString(3,room.getLastName());
+            prepare.setString(4,room.getPassport());
+            prepare.setString(5,room.getSex());
+            prepare.setString(6,room.getEmail());
+            prepare.setString(7,room.getPhoneNumber());
+            prepare.setString(8,room.getCheckIn());
+            prepare.setString(9,room.getCheckOut());
+            prepare.setString(10,room.getRoomNumber());
 
             if (prepare.executeUpdate() == 1){
-                addResult = true;
+                updateResult = true;
             }
-        }
-        catch (SQLException e){
+        }catch (SQLException e){
             e.printStackTrace();
         }finally {
             close();
         }
-        return addResult;
+        return updateResult;
     }
 
     public boolean updateRoom(Room room,int newStatus){

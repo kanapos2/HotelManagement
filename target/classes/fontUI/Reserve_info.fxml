@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -91,8 +92,8 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <DatePicker editable="false" layoutX="125.0" layoutY="24.0" />
-                        <DatePicker editable="false" layoutX="126.0" layoutY="66.0" />
+                        <DatePicker fx:id="chIn" editable="false" layoutX="125.0" layoutY="24.0" />
+                        <DatePicker fx:id="chOut" editable="false" layoutX="126.0" layoutY="66.0" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="confirm" layoutX="213.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleComfirm" prefHeight="57.0" prefWidth="133.0" style="-fx-background-color: green;" text="Confirm" textFill="WHITE">
@@ -126,7 +127,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="264.0">
                <children>
-                  <TextField layoutX="263.0" layoutY="110.0" prefHeight="27.0" prefWidth="250.0" />
+                  <TextField fx:id="tf_FirstName" layoutX="263.0" layoutY="110.0" prefHeight="27.0" prefWidth="250.0" />
                   <TextField alignment="CENTER" editable="false" layoutX="13.0" layoutY="22.0" prefHeight="55.0" prefWidth="193.0" style="-fx-border-color: black;">
                      <font>
                         <Font size="26.0" />
@@ -143,11 +144,14 @@
                   <CheckBox fx:id="boxMiss" layoutX="109.0" layoutY="114.0" mnemonicParsing="false" text="Miss." />
                   <Label layoutX="531.0" layoutY="114.0" text="Lastname :" />
                   <Label layoutX="184.0" layoutY="152.0" text="Passport / ID Card :" />
-                  <TextField layoutX="314.0" layoutY="147.0" prefHeight="27.0" prefWidth="242.0" />
-                  <RadioButton layoutX="228.0" layoutY="189.0" mnemonicParsing="false" text="Male" />
-                  <RadioButton layoutX="288.0" layoutY="189.0" mnemonicParsing="false" text="Female" />
+                  <TextField fx:id="tf_Passport" layoutX="314.0" layoutY="147.0" prefHeight="27.0" prefWidth="242.0" />
+                  <RadioButton fx:id="rd_sex" layoutX="228.0" layoutY="189.0" mnemonicParsing="false" text="Male">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rd_sex" layoutX="288.0" layoutY="189.0" mnemonicParsing="false" text="Female" toggleGroup="$group" />
                   <Label layoutX="184.0" layoutY="190.0" text="Sex :" />
-                  <TextField layoutX="607.0" layoutY="111.0" prefHeight="27.0" prefWidth="250.0" />
+                  <TextField fx:id="tf_LastName" layoutX="607.0" layoutY="111.0" prefHeight="27.0" prefWidth="250.0" />
                   <Label layoutX="564.0" layoutY="152.0" text="Birth Date :" />
                   <AnchorPane layoutX="643.0" layoutY="141.0" prefHeight="46.0" prefWidth="200.0">
                      <children>
@@ -160,9 +164,9 @@
                   <Label layoutX="183.0" layoutY="293.0" text="Company :" />
                   <TextField layoutX="257.0" layoutY="288.0" prefHeight="27.0" prefWidth="250.0" />
                   <Label layoutX="523.0" layoutY="293.0" text="Email :" />
-                  <TextField layoutX="577.0" layoutY="288.0" prefHeight="27.0" prefWidth="250.0" promptText="aa@aaa.com" />
+                  <TextField fx:id="tf_Email" layoutX="577.0" layoutY="288.0" prefHeight="27.0" prefWidth="250.0" promptText="aa@aaa.com" />
                   <Label layoutX="185.0" layoutY="328.0" text="Phone number :" />
-                  <TextField layoutX="293.0" layoutY="323.0" prefHeight="27.0" prefWidth="212.0" promptText="081-123-4567" />
+                  <TextField fx:id="tf_PhoneNumber" layoutX="293.0" layoutY="323.0" prefHeight="27.0" prefWidth="212.0" promptText="081-123-4567" />
                   <SplitPane dividerPositions="0.012987012987012988" layoutY="384.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="930.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="9.0" prefWidth="928.0" />
