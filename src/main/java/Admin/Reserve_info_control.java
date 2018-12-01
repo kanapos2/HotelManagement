@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Reserve_info_control {
 
@@ -25,7 +26,7 @@ public class Reserve_info_control {
     private TextField tf_FirstName , tf_LastName , tf_Passport , tf_Email , tf_PhoneNumber;
 
     @FXML
-    private RadioButton rd_sex;
+    protected RadioButton rd_male,rd_female;
 
     @FXML
     private DatePicker chIn , chOut;
@@ -144,42 +145,43 @@ public class Reserve_info_control {
         Connection connection = db.openDatabase();
         RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
 
-        if (rd_sex.getText().equals("Male")){
-            Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
-                    tf_Passport.getText(), rd_sex.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
-            room.setRoomNumber(numberOfRoom);
-            System.out.println(roomDBConnector.addInformation(room,1));
+        if ((!tf_FirstName.getText().equals("")) && (!tf_LastName.getText().equals("")) && !tf_Passport.getText().equals("") && !tf_Email.getText().equals("")
+                && !tf_PhoneNumber.getText().equals("")  && chIn.getValue()!=null && chOut.getValue()!=null && (rd_male.isSelected() || rd_female.isSelected())){
+            if (rd_male.isSelected()){
+                Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
+                        tf_Passport.getText(), rd_male.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
+                room.setRoomNumber(numberOfRoom);
+                System.out.println(roomDBConnector.addInformation(room,1));
 
-        }
-        else {
-            Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
-                    tf_Passport.getText(), rd_sex.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
-            room.setRoomNumber(numberOfRoom);
-            System.out.println(roomDBConnector.addInformation(room,1));
+            }
+            else {
+                Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
+                        tf_Passport.getText(), rd_female.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
+                room.setRoomNumber(numberOfRoom);
+                System.out.println(roomDBConnector.addInformation(room,1));
 
-        }
+            }
 
+            Stage stage = (Stage) confirm.getScene().getWindow();
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Manu.fxml"));
 
+            try {
+                stage.setScene(new Scene(loader.load(), 1280, 720));
+                stage.setTitle("Reserve hotel");
 
+                Manu_control controller = (Manu_control) loader.getController();
+                controller.setUserAfterClickRoom(nowLogin);
 
+                stage.show();
 
-
-        Stage stage = (Stage) confirm.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Manu.fxml"));
-
-        try {
-            stage.setScene(new Scene(loader.load(), 1280, 720));
-            stage.setTitle("Reserve hotel");
-
-            Manu_control controller = (Manu_control) loader.getController();
-            controller.setUserAfterClickRoom(nowLogin);
-
-            stage.show();
-
-        } catch (IOException e1) {
-            e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please complete the form.", ButtonType.OK);
+            alert.setHeaderText("");
+            alert.show();
         }
     }
 

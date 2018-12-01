@@ -35,7 +35,7 @@ public class Manu_control {
     private String typeRoom = "";
 
     @FXML
-    private VBox vBox;
+    protected VBox vBox;
 
     private int second , hour , minute;
 
@@ -243,7 +243,6 @@ public class Manu_control {
             }
         }
 
-
         for (Room s : roomDBConnector.readRoom()){
             if (room.equals(s.getRoomNumber())){
                 System.out.println("----------- DEBUG ----------");
@@ -273,6 +272,16 @@ public class Manu_control {
 
                 }
                 else {
+//                    DBConnector data = new DBConnector();
+//                    Connection connect = data.openDatabase();
+//                    RoomDBConnector roomCheckdatabase = new RoomDBConnector(connect);
+//                    Room chooseRoom = null;
+//                    for (Room cusRoom:roomCheckdatabase.readRoom()) {
+//                        if (cusRoom.getRoomNumber().equals(s.getRoomNumber())){
+//                            chooseRoom = cusRoom;
+//                            break;
+//                        }
+//                    }
                     Stage stage = new Stage();
 
                     vBox.setDisable(true);
@@ -283,12 +292,16 @@ public class Manu_control {
                         stage.setTitle("Reserve info");
                         CheckOut_control controller = (CheckOut_control) loader.getController();
                         System.out.println(s.getRoomNumber());
+                        controller.loginAs.setText("Login as : " + lastLogin);
+                        controller.roomnumber.setText(s.getRoomNumber());
+                        controller.typeRoom.setText(typeRoom);
+                        controller.setNowRoom(s);
+                        controller.setManu_control(this);
                         stage.show();
 
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
-
                 }
             }
         }

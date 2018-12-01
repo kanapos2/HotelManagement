@@ -81,6 +81,25 @@ public class RoomDBConnector {
         return updateResult;
     }
 
+    public boolean updateRoomCheckOut(Room room,int newStatus){
+        boolean updateResult = false;
+        try{
+            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=NULL ,LastName=NULL ,Passport=NULL ,Sex=NULL ,Email=NULL ,PhoneNumber=NULL ,CheckIn=NULL ,CheckOut=NULL WHERE roomNumber=?";
+            PreparedStatement prepare = connection.prepareStatement(sqlText);
+            prepare.setInt(1,newStatus);
+            prepare.setString(2,room.getRoomNumber());
+
+            if (prepare.executeUpdate() == 1){
+                updateResult = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            close();
+        }
+        return updateResult;
+    }
+
 
 
     public ArrayList<Room> readRoom(){ // Review User //
@@ -94,6 +113,14 @@ public class RoomDBConnector {
                 room = new Room();
                 room.setRoomNumber(resultSet.getString(1));
                 room.setRoomStatus(resultSet.getInt(2));
+                room.setFirstName(resultSet.getString(3));
+                room.setLastName(resultSet.getString(4));
+                room.setPassport(resultSet.getString(5));
+                room.setSex(resultSet.getString(6));
+                room.setEmail(resultSet.getString(7));
+                room.setPhoneNumber(resultSet.getString(8));
+                room.setCheckIn(resultSet.getString(9));
+                room.setCheckOut(resultSet.getString(10));
                 roomsArray.add(room);
             }
         }catch (SQLException e){
