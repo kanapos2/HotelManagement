@@ -154,10 +154,9 @@ public class Manu_control {
         DBConnector db = new DBConnector();
         Connection connection = db.openDatabase();
         RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
-        roomDBConnector.readRoom();
 
         Scene scene = firstFloor.getScene();
-        String roomNum = "" ;
+        String roomNum = "";
         for (String s : roomName){
             for (int i=1 ; i<=11 ; i++){
                 if (i<10) {
@@ -170,49 +169,84 @@ public class Manu_control {
 
                 Button newRoomNum = (Button) scene.lookup("#"+roomNum);
                 if (roomNumber.equals(newRoomNum)){
-                    room = roomNum;
                     if (roomNum.equals("B201") || roomNum.equals("C301")){
                         typeRoom = "Family room";
+                        room = newRoomNum.getText();
                     }
                     else if (roomNum.equals("B202") || roomNum.equals("C302")) {
                         typeRoom = "Presidential suite";
+                        room = newRoomNum.getText();
                     }
                     else if (roomNum.equals("B203") || roomNum.equals("C303")) {
                         typeRoom = "Junior suite" ;
+                        room = newRoomNum.getText();
                     }
                     else if (roomNum.equals("B204") || roomNum.equals("B206") || roomNum.equals("B208") || roomNum.equals("B210") ||
                             roomNum.equals("C304") || roomNum.equals("C306") || roomNum.equals("C308") || roomNum.equals("C310")) {
                         typeRoom = "Super Deluxe";
+                        room = newRoomNum.getText();
                     }
                     else if (roomNum.equals("B205") || roomNum.equals("B207") || roomNum.equals("B209") ||
                             roomNum.equals("C305") || roomNum.equals("C307") || roomNum.equals("C309")) {
                         typeRoom = "Deluxe";
+                        room = newRoomNum.getText();
                     }
                     else {
                         typeRoom = "Superior";
+                        room = newRoomNum.getText();
                     }
                 }
             }
         }
 
 
-        Stage stage = (Stage) roomNumber.getScene().getWindow();
+        for (Room s : roomDBConnector.readRoom()){
+            if (room.equals(s.getRoomNumber())){
+                System.out.println("----------- DEBUG ----------");
+                System.out.println(room);
+                System.out.println(s.getRoomNumber());
+                System.out.println(s.getRoomStatus());
+                System.out.println("----------- DEBUG ----------");
+                if (s.getRoomStatus()==0){
+                    Stage stage = (Stage) roomNumber.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Reserve_info.fxml"));
-        try {
-            stage.setScene(new Scene(loader.load(), 1280, 720));
-            stage.setTitle("Reserve info");
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Reserve_info.fxml"));
+                    try {
+                        stage.setScene(new Scene(loader.load(), 1280, 720));
+                        stage.setTitle("Reserve info");
 
-            Reserve_info_control controller = (Reserve_info_control) loader.getController();
-            controller.roomNumber(room);
-            controller.name(lastLogin);
-            controller.showTypeRoom(typeRoom);
+                        Reserve_info_control controller = (Reserve_info_control) loader.getController();
+                        controller.roomNumber(room);
+                        controller.name(lastLogin);
+                        controller.showTypeRoom(typeRoom);
 
-            stage.show();
+                        stage.show();
 
-        } catch (IOException e1) {
-            e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                }
+                else {
+                    Stage stage = (Stage) roomNumber.getScene().getWindow();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/CheckOut.fxml"));
+                    try {
+                        stage.setScene(new Scene(loader.load(), 1280, 720));
+                        stage.setTitle("Reserve info");
+
+                        CheckOut_control controller = (CheckOut_control) loader.getController();
+
+                        stage.show();
+
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                }
+            }
         }
+
 
     }
 
