@@ -3,6 +3,7 @@ package Model;
 public class Room {
     private String roomNumber ;
     private int roomStatus;
+    private String firstName;
 
     public Room(String roomNumber, int roomStatus) {
         this.roomNumber = roomNumber;
