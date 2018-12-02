@@ -41,9 +41,7 @@ public class Login_as_admin_control {
         String passwd = password.getText();
         String checkLogin = user+passwd;
         boolean canLogin = false;
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        UserDBControl userDBControl = new UserDBControl(connection);
+        UserDBControl userDBControl = DBConnector.openUserDB();
         this.userList = userDBControl.readUser();
 
         for (int i = 0; i < userList.size() ; i++) {

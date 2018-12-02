@@ -1,5 +1,6 @@
 package Admin;
 
+import Model.Clock;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Information_control {
+public class Information_control extends Clock {
 
     @FXML
     private Label timeInformation;
@@ -32,17 +33,7 @@ public class Information_control {
 
     @FXML
     public void initialize(){
-        Timeline c = new Timeline(new KeyFrame(Duration.ZERO, e -> {
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            String timer = now.format(formatter);
-            timeInformation.setText(timer);
-
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        c.setCycleCount(Animation.INDEFINITE);
-        c.play();
+        super.showClock(timeInformation);
     }
 
     @FXML

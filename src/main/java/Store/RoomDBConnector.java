@@ -30,7 +30,7 @@ public class RoomDBConnector {
         catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return addResult;
     }
@@ -57,7 +57,7 @@ public class RoomDBConnector {
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return updateResult;
     }
@@ -76,7 +76,7 @@ public class RoomDBConnector {
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return updateResult;
     }
@@ -95,7 +95,7 @@ public class RoomDBConnector {
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return updateResult;
     }
@@ -107,43 +107,81 @@ public class RoomDBConnector {
         Room room = null;
         try{
             stmt = connection.createStatement();
-            String query = "SELECT * FROM room_status";
-            resultSet = stmt.executeQuery(query);
+            String query1 = "SELECT * FROM room_status";
+            resultSet = stmt.executeQuery(query1);
             while (resultSet.next()){
-                room = new Room();
-                room.setRoomNumber(resultSet.getString(1));
-                room.setRoomStatus(resultSet.getInt(2));
-                room.setFirstName(resultSet.getString(3));
-                room.setLastName(resultSet.getString(4));
-                room.setPassport(resultSet.getString(5));
-                room.setSex(resultSet.getString(6));
-                room.setEmail(resultSet.getString(7));
-                room.setPhoneNumber(resultSet.getString(8));
-                room.setCheckIn(resultSet.getString(9));
-                room.setCheckOut(resultSet.getString(10));
-                roomsArray.add(room);
+                roomsArray.add(newRoomFromDB(resultSet));
             }
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return roomsArray;
     }
 
-    private void close() {
+    private Room newRoomFromDB(ResultSet resultSet){
+        Room roomHistory = new Room();
         try {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
+            roomHistory.setRoomNumber(resultSet.getString(1));
+            roomHistory.setRoomStatus(resultSet.getInt(2));
+            roomHistory.setFirstName(resultSet.getString(3));
+            roomHistory.setLastName(resultSet.getString(4));
+            roomHistory.setPassport(resultSet.getString(5));
+            roomHistory.setSex(resultSet.getString(6));
+            roomHistory.setEmail(resultSet.getString(7));
+            roomHistory.setPhoneNumber(resultSet.getString(8));
+            roomHistory.setCheckIn(resultSet.getString(9));
+            roomHistory.setCheckOut(resultSet.getString(10));
+        }catch (SQLException e){
             e.printStackTrace();
         }
+
+        return roomHistory;
+    }
+
+    public ArrayList<Room> readHistory(){ // Review User //
+        ArrayList<Room> roomsArray = new ArrayList<>();
+        try{
+            stmt = connection.createStatement();
+            String query = "SELECT * FROM history";
+            resultSet = stmt.executeQuery(query);
+            while (resultSet.next()){
+                roomsArray.add(newRoomFromDB(resultSet));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
+        }
+        return roomsArray;
+    }
+
+    public boolean addHistory(Room room,int historyStatus){
+        boolean addResult = false;
+        try {
+            Room newRoom = room;
+            String sqlText = "INSERT INTO history VALUES (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement prepare = connection.prepareStatement(sqlText);
+            prepare.setString(1,newRoom.getRoomNumber());
+            prepare.setInt(2,historyStatus);
+            prepare.setString(3,newRoom.getFirstName());
+            prepare.setString(4,newRoom.getLastName());
+            prepare.setString(5,newRoom.getPassport());
+            prepare.setString(6,newRoom.getSex());
+            prepare.setString(7,newRoom.getEmail());
+            prepare.setString(8,newRoom.getPhoneNumber());
+            prepare.setString(9,newRoom.getCheckIn());
+            prepare.setString(10,newRoom.getCheckOut());
+            if (prepare.executeUpdate() == 1){
+                addResult = true;
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
+        }
+        return addResult;
     }
 }

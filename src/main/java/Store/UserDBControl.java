@@ -35,7 +35,7 @@ public class UserDBControl {
         catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return addResult;
     }
@@ -63,24 +63,9 @@ public class UserDBControl {
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
-            close();
+            DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }
         return usersArray;
     }
-
-    private void close() {
-        try {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    
 }

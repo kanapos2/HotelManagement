@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -46,6 +49,7 @@ public class Reserve_info_control {
     private int roomPrice ;
     private int calIn,calOut;
     private int totalPrice;
+    private LocalDate date1,date2;
 
     @FXML
     public void roomNumber(String number,int price) {
@@ -63,36 +67,30 @@ public class Reserve_info_control {
         chIn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                calIn  = chIn.getValue().getDayOfMonth();
-                try {
-                    int test = chOut.getValue().getDayOfMonth();
-                    convertPrice(calIn,test);
+                if (chOut.getValue()==null){
+                    date1 = chIn.getValue();
+                }else{
+                    date1 = chIn.getValue();
+                    calDate(date1,date2);
                 }
-                catch (NullPointerException e){
-                    e.getStackTrace();
-                }
-
             }
         });
         chOut.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                calOut = chOut.getValue().getDayOfMonth();
-                convertPrice(calIn,calOut);
+                date2 = chOut.getValue();
+                calDate(date1,date2);
             }
         });
     }
 
-
-
-    public void convertPrice(int in,int out){
-        if (out > in){
-            totalPrice=0;
-            totalPrice = (out-in)*roomPrice;
-            System.out.println(totalPrice);
-            totalPriceLabel.setText(String.valueOf(totalPrice));
-        }else return;
+    public void calDate(LocalDate d1,LocalDate d2){
+        long p2 = ChronoUnit.DAYS.between(d1, d2);
+        totalPrice=0;
+        totalPrice = (int) p2*roomPrice;
+        totalPriceLabel.setText(String.valueOf(totalPrice));
     }
+
 
     @FXML
     public void name(String nameLogin){
@@ -141,9 +139,8 @@ public class Reserve_info_control {
         confirm = (Button) event.getSource();
 
 
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
+        RoomDBConnector historyDBConnector = DBConnector.openRoomDB();
 
         if ((!tf_FirstName.getText().equals("")) && (!tf_LastName.getText().equals("")) && !tf_Passport.getText().equals("") && !tf_Email.getText().equals("")
                 && !tf_PhoneNumber.getText().equals("")  && chIn.getValue()!=null && chOut.getValue()!=null && (rd_male.isSelected() || rd_female.isSelected())){
@@ -152,6 +149,7 @@ public class Reserve_info_control {
                         tf_Passport.getText(), rd_male.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
                 room.setRoomNumber(numberOfRoom);
                 System.out.println(roomDBConnector.addInformation(room,1));
+                System.out.println("Add to history :"+historyDBConnector.addHistory(room,3));
 
             }
             else {
@@ -159,7 +157,7 @@ public class Reserve_info_control {
                         tf_Passport.getText(), rd_female.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
                 room.setRoomNumber(numberOfRoom);
                 System.out.println(roomDBConnector.addInformation(room,1));
-
+                System.out.println("Add to history :"+historyDBConnector.addHistory(room,3));
             }
 
             Stage stage = (Stage) confirm.getScene().getWindow();
@@ -206,9 +204,7 @@ public class Reserve_info_control {
 //    }
 
     public void updateRoomStatus(Room room){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
         roomDBConnector.updateRoom(room,1);
     }
 

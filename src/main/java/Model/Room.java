@@ -115,9 +115,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "roomNumber='" + roomNumber + '\'' +
-                ", roomStatus='" + roomStatus + '\'' +
-                '}';
+        return "RoomNumber : "+roomNumber+" || Customer Info : "+firstName+" - "+lastName+" - "+passport+" - "+email+" - "+phoneNumber+" || CheckIn-Date : "+checkIn+" , CheckOut-Date : "+checkOut;
     }
 }

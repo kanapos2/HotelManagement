@@ -93,9 +93,7 @@ public class CheckOut_control {
         checkoutbt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBConnector db = new DBConnector();
-                Connection connection = db.openDatabase();
-                RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+                RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
                 Alert alert = new Alert(Alert.AlertType.WARNING,"Do you want to confirm check-out ?", ButtonType.YES,ButtonType.NO);
                 alert.setHeaderText("");
                 Optional optional = alert.showAndWait();

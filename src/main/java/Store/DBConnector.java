@@ -34,6 +34,38 @@ public class DBConnector {
         }
     }
 
+    public static void closeAllConfigure(ResultSet resultSet,Statement stmt,Connection connection){
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static RoomDBConnector openRoomDB(){
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        RoomDBConnector RoomControls = new RoomDBConnector(connection);
+        return RoomControls;
+    }
+
+    public static UserDBControl openUserDB(){
+        DBConnector db = new DBConnector();
+        Connection connection = db.openDatabase();
+        UserDBControl UserControls = new UserDBControl(connection);
+        return UserControls;
+    }
+
+
+
 
 
 }

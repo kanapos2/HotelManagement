@@ -75,9 +75,8 @@ public class Register_control {
         Button b = (Button) event.getSource();
         String passwd = "" + password.getText();
         String current_passwd = "" + current_password.getText();
-        DBConnector db = new DBConnector();
-        Connection connect = db.openDatabase();
-        UserDBControl list = new UserDBControl(connect);
+
+        UserDBControl list = DBConnector.openUserDB();
         listofUser = list.readUser();
         if (b.equals(check_btn)) {
             String letterInput = userNamefield.getText().toLowerCase();
@@ -177,9 +176,7 @@ public class Register_control {
     }
 
     public void Confirm(){ // Stored data and back to log-in page
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        UserDBControl userDBControl = new UserDBControl(connection);
+        UserDBControl userDBControl = DBConnector.openUserDB();
         User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneText,
                 emailField.getText(),password.getText());
         userDBControl.addUser(newUser);

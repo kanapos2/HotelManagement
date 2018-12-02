@@ -1,5 +1,6 @@
 package Admin;
 
+import Model.Clock;
 import Model.Room;
 import Store.DBConnector;
 import Store.RoomDBConnector;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
-public class Manu_control {
+public class Manu_control extends Clock {
 
     private String lastLogin = "";
     private String[] roomName = {"B2","C3"} ;
@@ -49,7 +50,7 @@ public class Manu_control {
     private AnchorPane firstFloor ;
 
     @FXML
-    private Button btn_signout, btn_next , btn_information ;
+    protected Button btn_signout, btn_next , btn_information,historyBtn ;
 
     @FXML
     private Button B201,B202,B203,B204,B205,B206,B207,B208,B209,B210,B211,
@@ -64,36 +65,15 @@ public class Manu_control {
         lastLogin = name;
 
         start();
-
-        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            String time = now.format(formatter);
-            timeZone.setText(time);
-
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        clock.setCycleCount(Animation.INDEFINITE);
-        clock.play();
-
-        Date today = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMM YYYY");
-        datefield.setText(format.format(today));
-        System.out.println(format.format(today));
-
-
-
-
+        super.showClock(timeZone);
+        datefield.setText(super.showDate());
     }
 
 
 
     @FXML
     public void start(){
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
 
         System.out.println("@@@@@@@@@");
 
@@ -165,6 +145,22 @@ public class Manu_control {
     }
 
     @FXML
+    public void setHistoryBtn(ActionEvent event){
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/History.fxml"));
+        try {
+            stage.setScene(new Scene(loader.load(), 1000, 600));
+            stage.setTitle("Reserve History Information");
+            History_Control controller = (History_Control) loader.getController();
+            controller.setShow();
+            stage.show();
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    @FXML
     public void signOut(ActionEvent event) {
         System.out.println("Sign out");
 
@@ -192,9 +188,7 @@ public class Manu_control {
         String room = "" ;
         int roomPrice = 0;
 
-        DBConnector db = new DBConnector();
-        Connection connection = db.openDatabase();
-        RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+        RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
 
         Scene scene = firstFloor.getScene();
         String roomNum = "";
@@ -308,9 +302,7 @@ public class Manu_control {
         final int[] numberCount = new int[1];
 
         while (status){
-            DBConnector db = new DBConnector();
-            Connection connection = db.openDatabase();
-            RoomDBConnector roomDBConnector = new RoomDBConnector(connection);
+            RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
 
 
             TextInputDialog dialog = new TextInputDialog();
