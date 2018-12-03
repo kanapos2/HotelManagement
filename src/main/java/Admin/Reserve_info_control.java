@@ -47,7 +47,6 @@ public class Reserve_info_control {
     private String numberOfRoom = "";
 
     private int roomPrice ;
-    private int calIn,calOut;
     private int totalPrice;
     private LocalDate date1,date2;
 
@@ -88,7 +87,9 @@ public class Reserve_info_control {
         long p2 = ChronoUnit.DAYS.between(d1, d2);
         totalPrice=0;
         totalPrice = (int) p2*roomPrice;
-        totalPriceLabel.setText(String.valueOf(totalPrice));
+        if (totalPrice >= 0){
+            totalPriceLabel.setText(String.valueOf(totalPrice));
+        }
     }
 
 
@@ -144,18 +145,18 @@ public class Reserve_info_control {
 
         if ((!tf_FirstName.getText().equals("")) && (!tf_LastName.getText().equals("")) && !tf_Passport.getText().equals("") && !tf_Email.getText().equals("")
                 && !tf_PhoneNumber.getText().equals("")  && chIn.getValue()!=null && chOut.getValue()!=null && (rd_male.isSelected() || rd_female.isSelected())){
+
+            Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
+                    tf_Passport.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
+            room.setRoomNumber(numberOfRoom);
+            room.setTotalprice(String.valueOf(totalPrice));
             if (rd_male.isSelected()){
-                Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
-                        tf_Passport.getText(), rd_male.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
-                room.setRoomNumber(numberOfRoom);
+                room.setSex(rd_male.getText());
                 System.out.println(roomDBConnector.addInformation(room,1));
                 System.out.println("Add to history :"+historyDBConnector.addHistory(room,3));
-
             }
             else {
-                Room room = new Room(tf_FirstName.getText(),tf_LastName.getText(),
-                        tf_Passport.getText(), rd_female.getText(), tf_Email.getText(),tf_PhoneNumber.getText(),""+chIn.getValue(),""+chOut.getValue());
-                room.setRoomNumber(numberOfRoom);
+                room.setSex(rd_female.getText());
                 System.out.println(roomDBConnector.addInformation(room,1));
                 System.out.println("Add to history :"+historyDBConnector.addHistory(room,3));
             }

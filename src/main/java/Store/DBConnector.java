@@ -24,7 +24,7 @@ public class DBConnector {
     }
 
 
-//    public Connection openDatabase() {
+//    public Connection openMysql() {
 //        try {
 //            Class.forName("org.sqlite.JDBC");
 //            if(connect == null) {

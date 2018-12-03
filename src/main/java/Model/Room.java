@@ -12,6 +12,7 @@ public class Room {
     private String phoneNumber;
     private String checkIn;
     private String checkOut;
+    private String totalprice;
 
     public Room(String roomNumber, int roomStatus) {
         this.roomNumber = roomNumber;
@@ -21,12 +22,11 @@ public class Room {
     public Room() {
     }
 
-    public Room(String firstName, String lastName, String passport, String sex, String email, String phoneNumber,
+    public Room(String firstName, String lastName, String passport, String email, String phoneNumber,
                 String checkIn , String checkOut){
         this.firstName = firstName;
         this.lastName = lastName;
         this.passport = passport;
-        this.sex = sex;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.checkIn = checkIn;
@@ -111,6 +111,14 @@ public class Room {
 
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public String getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(String totalprice) {
+        this.totalprice = totalprice;
     }
 
     @Override

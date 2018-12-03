@@ -3,6 +3,7 @@ package Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -41,12 +42,11 @@ public class Permission_control {
         try {
             stage.setScene(new Scene(loader.load(),1280,720));
             stage.setTitle("Hotel Management");
-
             Register_control controller = (Register_control) loader.getController();
 
             stage.show();
         } catch (IOException e1){
             e1.printStackTrace();
         }
-    }  
+    }
 }

@@ -14,17 +14,17 @@
          <items>
             <AnchorPane prefHeight="398.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="typeRoom" alignment="CENTER" layoutX="74.0" layoutY="236.0" prefHeight="33.0" prefWidth="142.0" text="type" textFill="#1f7aa8">
+                  <Label fx:id="typeRoom" alignment="CENTER" layoutX="74.0" layoutY="233.0" prefHeight="33.0" prefWidth="142.0" text="type" textFill="#1f7aa8">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roomnumber" layoutX="49.0" layoutY="182.0" prefHeight="34.0" prefWidth="126.0" text="roomNum" textFill="#1f7aa8">
+                  <Label fx:id="roomnumber" layoutX="49.0" layoutY="181.0" prefHeight="34.0" prefWidth="126.0" text="roomNum" textFill="#1f7aa8">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="44.0" layoutY="139.0" text="Room number">
+                  <Label layoutX="44.0" layoutY="138.0" text="Room number">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -39,11 +39,16 @@
                         <Image url="@../images/dippinno_logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="2.0" layoutY="245.0" text="Type room :" />
-                  <Label layoutX="20.0" layoutY="294.0" text="Check-In date :" />
-                  <Label layoutX="10.0" layoutY="336.0" text="Check-Out date :" />
-                  <Label fx:id="Inday" layoutX="120.0" layoutY="291.0" prefHeight="24.0" prefWidth="88.0" text="Date" />
-                  <Label fx:id="Outday" layoutX="120.0" layoutY="333.0" prefHeight="24.0" prefWidth="88.0" text="Date" />
+                  <Label layoutX="2.0" layoutY="242.0" text="Type room :" />
+                  <Label layoutX="20.0" layoutY="286.0" text="Check-In date :" />
+                  <Label layoutX="10.0" layoutY="328.0" text="Check-Out date :" />
+                  <Label fx:id="Inday" layoutX="120.0" layoutY="283.0" prefHeight="24.0" prefWidth="88.0" text="Date" />
+                  <Label fx:id="Outday" layoutX="120.0" layoutY="325.0" prefHeight="24.0" prefWidth="88.0" text="Date" />
+                  <Label fx:id="checkoutPrice" alignment="CENTER" layoutX="2.0" layoutY="356.0" prefHeight="34.0" prefWidth="214.0" text="Label" textFill="#ff3d3d" underline="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">

@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -49,7 +50,7 @@ public class CheckOut_control {
     protected Label email;
 
     @FXML
-    protected Label phone;
+    protected Label phone,checkoutPrice;
 
     @FXML
     protected Button canclebt,checkoutbt;
@@ -75,6 +76,7 @@ public class CheckOut_control {
         phone.setText(nowRoom.getPhoneNumber());
         Inday.setText(nowRoom.getCheckIn());
         Outday.setText(nowRoom.getCheckOut());
+        checkoutPrice.setText(nowRoom.getTotalprice());
 
         canclebt.setOnAction(new EventHandler<ActionEvent>() {
             @Override

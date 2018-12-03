@@ -13,7 +13,6 @@ public class Main extends Application {
         primaryStage.setTitle("Hotel Management");
         primaryStage.setScene(new Scene(root, 1280 , 720));
 
-
         primaryStage.show();
     }
 

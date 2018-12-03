@@ -1,22 +1,23 @@
 package Admin;
 
 import Model.User;
-import Store.ArrayDatabase;
 import Store.DBConnector;
 import Store.UserDBControl;
+import com.sun.javafx.cursor.CursorFrame;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Array;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 public class Login_as_admin_control {
@@ -33,7 +34,8 @@ public class Login_as_admin_control {
     @FXML
     private PasswordField password ;
 
-    protected ArrayList<User> userList;
+    @FXML
+    protected AnchorPane superPane;
 
     @FXML
     public void login(ActionEvent event) {
@@ -42,15 +44,14 @@ public class Login_as_admin_control {
         String checkLogin = user+passwd;
         boolean canLogin = false;
         UserDBControl userDBControl = DBConnector.openUserDB();
-        this.userList = userDBControl.readUser();
-
-        for (int i = 0; i < userList.size() ; i++) {
-            if (((userList.get(i).getUserName())+(userList.get(i).getPassWord())).equals(checkLogin)){
-                System.out.println(((userList.get(i).getUserName())+(userList.get(i).getPassWord())));
+        ArrayList<User> userList = userDBControl.readUser();
+        for (User anUserList : userList) {
+            if (((anUserList.getUserName()) + (anUserList.getPassWord())).equals(checkLogin)) {
+                System.out.println(((anUserList.getUserName()) + (anUserList.getPassWord())));
                 canLogin = true;
             }
         }
-        if (canLogin == true && event.getSource().equals(btn_login)) {
+        if (canLogin && event.getSource().equals(btn_login)) {
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 
@@ -62,8 +63,6 @@ public class Login_as_admin_control {
 
                 Manu_control controller = (Manu_control) loader_Manu.getController();
                 controller.setUser(username.getText());
-
-
                 stage.show();
 
             } catch (IOException e1) {

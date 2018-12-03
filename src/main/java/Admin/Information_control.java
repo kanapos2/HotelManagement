@@ -1,6 +1,7 @@
 package Admin;
 
 import Model.Clock;
+import Model.Room;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,21 +21,47 @@ import java.time.format.DateTimeFormatter;
 public class Information_control extends Clock {
 
     @FXML
-    private Label timeInformation;
+    protected Label timeInformation,chIn,chOut,fName,lName,sexual,mail,phone,pass;
+
+    @FXML
+    protected Label thisPrice;
 
     @FXML
     private Button close ;
 
+    protected Room nowInfo;
+
     protected Manu_control manu_control;
+
+    public void setNowInfo(Room nowInfo) {
+        this.nowInfo = nowInfo;
+        setShowInformation();
+    }
 
     public void setManu_control(Manu_control manu_control) {
         this.manu_control = manu_control;
     }
-
     @FXML
     public void initialize(){
         super.showClock(timeInformation);
     }
+
+    @FXML
+    public void setShowInformation(){
+        chIn.setText(nowInfo.getCheckIn());
+        chOut.setText(nowInfo.getCheckOut());
+        fName.setText(nowInfo.getFirstName());
+        lName.setText(nowInfo.getLastName());
+        pass.setText(nowInfo.getPassport());
+        sexual.setText(nowInfo.getSex());
+        mail.setText(nowInfo.getEmail());
+        phone.setText(nowInfo.getPhoneNumber());
+        thisPrice.setText(nowInfo.getTotalprice());
+    }
+
+
+
+
 
     @FXML
     public void closeInfor(){

@@ -1,7 +1,6 @@
 package Admin;
 
 import Model.User;
-import Store.ArrayDatabase;
 import Store.DBConnector;
 import Store.UserDBControl;
 import javafx.event.ActionEvent;
@@ -9,15 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 

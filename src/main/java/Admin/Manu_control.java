@@ -296,53 +296,38 @@ public class Manu_control extends Clock {
 
     @FXML
     public void informationPage(ActionEvent event){
-        btn_information = (Button) event.getSource();
-
         boolean status = true;
-        final int[] numberCount = new int[1];
-
         while (status){
             RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
-
-
             TextInputDialog dialog = new TextInputDialog();
-
             dialog.setHeaderText("Enter your room number");
             dialog.setContentText("Number:");
-
             Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()){
+                for (Room room:roomDBConnector.readRoom()) {
+                    if ((result.get().equals(room.getRoomNumber())) && room.getRoomStatus() == 1){
+                        status = false;
+                        Stage stage = new Stage();
+                        vBox.setDisable(true);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Information.fxml"));
+                        try {
+                            stage.setScene(new Scene(loader.load(), 580, 400));
+                            stage.setTitle("Information");
+                            Information_control controller = (Information_control) loader.getController();
+                            System.out.println(room.getTotalprice());
+                            controller.setNowInfo(room);
+                            controller.setManu_control(this);
+                            stage.show();
 
-            result.ifPresent(name -> {
-                for (Room s : roomDBConnector.readRoom()){
-                    if (name.equals(s.getRoomNumber()) && s.getRoomStatus()==1){
-                        System.out.println("-------------Correct----------");
-                        numberCount[0] = 1;
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-            });
-
-            if (numberCount[0]==1){
+            }else{
                 status = false;
             }
-
         }
-
-        Stage stage = new Stage();
-
-        vBox.setDisable(true);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Information.fxml"));
-        try {
-            stage.setScene(new Scene(loader.load(), 580, 400));
-            stage.setTitle("Information");
-            Information_control controller = (Information_control) loader.getController();
-            controller.setManu_control(this);
-            stage.show();
-
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-
     }
 
     @FXML

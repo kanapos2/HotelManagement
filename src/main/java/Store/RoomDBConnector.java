@@ -18,7 +18,7 @@ public class RoomDBConnector {
         boolean addResult = false;
         try {
             Room newRoom = room;
-            String sqlText = "INSERT INTO room_status VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sqlText = "INSERT INTO room_status VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
             prepare.setString(1,newRoom.getRoomNumber());
             prepare.setInt(2,newRoom.getRoomStatus());
@@ -38,7 +38,7 @@ public class RoomDBConnector {
     public boolean addInformation(Room room,int newStatus){
         boolean updateResult = false;
         try{
-            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=?,LastName=?,Passport=?,Sex=?,Email=?,PhoneNumber=?,CheckIn=?,CheckOut=? WHERE roomNumber=?";
+            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=?,LastName=?,Passport=?,Sex=?,Email=?,PhoneNumber=?,CheckIn=?,CheckOut=?,totalPrice=? WHERE roomNumber=?";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
             prepare.setInt(1,newStatus);
             prepare.setString(2,room.getFirstName());
@@ -49,7 +49,8 @@ public class RoomDBConnector {
             prepare.setString(7,room.getPhoneNumber());
             prepare.setString(8,room.getCheckIn());
             prepare.setString(9,room.getCheckOut());
-            prepare.setString(10,room.getRoomNumber());
+            prepare.setString(10,room.getTotalprice());
+            prepare.setString(11,room.getRoomNumber());
 
             if (prepare.executeUpdate() == 1){
                 updateResult = true;
@@ -84,7 +85,7 @@ public class RoomDBConnector {
     public boolean updateRoomCheckOut(Room room,int newStatus){
         boolean updateResult = false;
         try{
-            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=NULL ,LastName=NULL ,Passport=NULL ,Sex=NULL ,Email=NULL ,PhoneNumber=NULL ,CheckIn=NULL ,CheckOut=NULL WHERE roomNumber=?";
+            String sqlText = "UPDATE room_status SET roomStatus=?,FirstName=NULL ,LastName=NULL ,Passport=NULL ,Sex=NULL ,Email=NULL ,PhoneNumber=NULL ,CheckIn=NULL ,CheckOut=NULL,totalPrice=NULL WHERE roomNumber=?";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
             prepare.setInt(1,newStatus);
             prepare.setString(2,room.getRoomNumber());
@@ -133,6 +134,7 @@ public class RoomDBConnector {
             roomHistory.setPhoneNumber(resultSet.getString(8));
             roomHistory.setCheckIn(resultSet.getString(9));
             roomHistory.setCheckOut(resultSet.getString(10));
+            roomHistory.setTotalprice(resultSet.getString(11));
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -161,7 +163,7 @@ public class RoomDBConnector {
         boolean addResult = false;
         try {
             Room newRoom = room;
-            String sqlText = "INSERT INTO history VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sqlText = "INSERT INTO history VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepare = connection.prepareStatement(sqlText);
             prepare.setString(1,newRoom.getRoomNumber());
             prepare.setInt(2,historyStatus);
@@ -173,6 +175,7 @@ public class RoomDBConnector {
             prepare.setString(8,newRoom.getPhoneNumber());
             prepare.setString(9,newRoom.getCheckIn());
             prepare.setString(10,newRoom.getCheckOut());
+            prepare.setString(11,newRoom.getTotalprice());
             if (prepare.executeUpdate() == 1){
                 addResult = true;
             }
