@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 public class Login_as_admin_control {
 
     @FXML
-    private Button btn_login , btn_register;
+    private Button btn_login , btn_back;
 
     @FXML
     private TextField username ;
@@ -83,16 +84,16 @@ public class Login_as_admin_control {
     }
 
     @FXML
-    public void register(ActionEvent event) {
-        btn_register = (Button) event.getSource();
-        Stage stage = (Stage) btn_register.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Register.fxml")) ;
+    public void backToPermission(ActionEvent event) {
+        btn_back = (Button) event.getSource();
+        Stage stage = (Stage) btn_back.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Permission.fxml")) ;
 
         try {
             stage.setScene(new Scene(loader.load(),1280,720));
-            stage.setTitle("Register user");
+            stage.setTitle("Home");
             new FadeInDownBig(stage.getScene().getRoot()).play();
-            Register_control controller = (Register_control) loader.getController();
+            Permission_control controller = (Permission_control) loader.getController();
 
             stage.show();
         } catch (IOException e1){

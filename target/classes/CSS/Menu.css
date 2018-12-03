@@ -1,0 +1,12 @@
+#leftPane{
+    -fx-background-color: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%) ;
+
+}
+
+#rightPane{
+    -fx-background-color: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%) ;
+
+}
+.button{
+    -fx-border-color: black;
+}

@@ -10,13 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="superPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Login_as_admin_control">
+<AnchorPane fx:id="superPane"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Permission.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Login_as_admin_control">
    <children>
-      <ImageView fitHeight="874.0" fitWidth="1310.0" layoutX="-1.0" layoutY="-83.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/BgManu.jpg" />
-         </image>
-      </ImageView>
       <TextField fx:id="username" layoutX="614.0" layoutY="285.0" prefHeight="68.0" prefWidth="411.0" promptText="username">
          <font>
             <Font size="34.0" />
@@ -47,7 +42,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btn_register" layoutX="1043.0" layoutY="434.0" mnemonicParsing="false" onAction="#register" prefHeight="61.0" prefWidth="165.0" text="Register">
+      <Button fx:id="btn_back" layoutX="1043.0" layoutY="434.0" mnemonicParsing="false" onAction="#backToPermission" prefHeight="61.0" prefWidth="165.0" text="Back">
          <font>
             <Font size="30.0" />
          </font>

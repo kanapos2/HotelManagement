@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
@@ -48,10 +49,10 @@ public class Manu_control extends Clock {
     private Label user , timeZone ,datefield  ;
 
     @FXML
-    private AnchorPane firstFloor ;
+    private AnchorPane rightPane ;
 
     @FXML
-    protected Button btn_signout, btn_next , btn_information,historyBtn ;
+    protected Button btn_signout, btn_information,historyBtn ;
 
     @FXML
     private Button B201,B202,B203,B204,B205,B206,B207,B208,B209,B210,B211,
@@ -93,7 +94,7 @@ public class Manu_control extends Clock {
 
 
 
-        Scene scene = firstFloor.getScene();
+        Scene scene = rightPane.getScene();
         for (Room s : roomDBConnector.readRoom()){
 //            System.out.println(numberOfRoom);
             for (int i=0 ;i<numberOfRoom.size() ; i++){
@@ -124,26 +125,6 @@ public class Manu_control extends Clock {
     }
 
 
-    @FXML
-    public void nextFloor(ActionEvent event){
-        btn_next = (Button) event.getSource();
-        Stage stage = (Stage) btn_signout.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fontUI/Forth_Seven_Floor.fxml"));
-        try {
-            stage.setScene(new Scene(loader.load(), 1280, 720));
-            stage.setTitle("4th-7th");
-
-            Forth_Seven_Floor_control controller = (Forth_Seven_Floor_control) loader.getController();
-            controller.nameLogin(lastLogin);
-
-            stage.show();
-
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-
-    }
 
     @FXML
     public void setHistoryBtn(ActionEvent event){
@@ -192,7 +173,7 @@ public class Manu_control extends Clock {
 
         RoomDBConnector roomDBConnector = DBConnector.openRoomDB();
 
-        Scene scene = firstFloor.getScene();
+        Scene scene = rightPane.getScene();
         String roomNum = "";
         for (String s : roomName){
             for (int i=1 ; i<=11 ; i++){
@@ -281,6 +262,7 @@ public class Manu_control extends Clock {
                     try {
                         stage.setScene(new Scene(loader.load(), 580, 400));
                         stage.setTitle("Reserve info");
+                        stage.initStyle(StageStyle.UNDECORATED);
                         CheckOut_control controller = (CheckOut_control) loader.getController();
 
                         controller.setNowRoom(s);
@@ -318,6 +300,7 @@ public class Manu_control extends Clock {
                         try {
                             stage.setScene(new Scene(loader.load(), 580, 400));
                             stage.setTitle("Information");
+                            stage.initStyle(StageStyle.UNDECORATED);
                             Information_control controller = (Information_control) loader.getController();
                             System.out.println(room.getTotalprice());
                             controller.setNowInfo(room);
