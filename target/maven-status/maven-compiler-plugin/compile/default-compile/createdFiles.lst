@@ -9,11 +9,9 @@ Admin/CheckOut_control$1.class
 Model/User.class
 Admin/Information_control.class
 Store/DBConnector.class
-Store/ArrayDatabase.class
 Admin/Manu_control.class
 Admin/CheckOut_control.class
 Admin/Permission_control.class
-Admin/Forth_Seven_Floor_control.class
 Admin/Reserve_info_control$1.class
 Admin/History_Control.class
 Admin/Register_control.class
