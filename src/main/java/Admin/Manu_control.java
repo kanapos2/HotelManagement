@@ -5,6 +5,7 @@ import Model.Room;
 import Store.DBConnector;
 import Store.RoomDBConnector;
 import Store.UserDBControl;
+import animatefx.animation.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -154,6 +155,7 @@ public class Manu_control extends Clock {
             History_Control controller = (History_Control) loader.getController();
             controller.setShow();
             stage.show();
+            new FadeIn(stage.getScene().getRoot()).play();
 
         } catch (IOException e1) {
             e1.printStackTrace();
@@ -172,7 +174,7 @@ public class Manu_control extends Clock {
         try {
             stage.setScene(new Scene(loader.load(), 1280, 720));
             stage.setTitle("Login hotel management for admin");
-
+            new Flash(stage.getScene().getRoot()).play();
             Login_as_admin_control controller = (Login_as_admin_control) loader.getController();
 
             stage.show();
@@ -256,6 +258,7 @@ public class Manu_control extends Clock {
                     try {
                         stage.setScene(new Scene(loader.load(), 1280, 720));
                         stage.setTitle("Reserve info");
+                        new JackInTheBox(stage.getScene().getRoot()).play();
 
                         Reserve_info_control controller = (Reserve_info_control) loader.getController();
                         controller.roomNumber(room,roomPrice);
@@ -279,10 +282,12 @@ public class Manu_control extends Clock {
                         stage.setScene(new Scene(loader.load(), 580, 400));
                         stage.setTitle("Reserve info");
                         CheckOut_control controller = (CheckOut_control) loader.getController();
+
                         controller.setNowRoom(s);
                         controller.setManu_control(this);
 
                         stage.show();
+                        new FadeInLeftBig(stage.getScene().getRoot()).play();
 
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -318,6 +323,7 @@ public class Manu_control extends Clock {
                             controller.setNowInfo(room);
                             controller.setManu_control(this);
                             stage.show();
+                            new FadeIn(stage.getScene().getRoot()).play();
 
                         } catch (IOException e1) {
                             e1.printStackTrace();

@@ -3,6 +3,7 @@ package Admin;
 import Model.User;
 import Store.DBConnector;
 import Store.UserDBControl;
+import animatefx.animation.*;
 import com.sun.javafx.cursor.CursorFrame;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -14,6 +15,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -35,7 +37,11 @@ public class Login_as_admin_control {
     private PasswordField password ;
 
     @FXML
-    protected AnchorPane superPane;
+    protected Pane pane;
+
+    public void initialize(){
+
+    }
 
     @FXML
     public void login(ActionEvent event) {
@@ -61,9 +67,11 @@ public class Login_as_admin_control {
                 stage.setScene(new Scene(loader_Manu.load(), 1280, 720));
                 stage.setTitle("Login hotel management for admin");
 
+
                 Manu_control controller = (Manu_control) loader_Manu.getController();
                 controller.setUser(username.getText());
                 stage.show();
+                new FadeIn(stage.getScene().getRoot()).play();
 
             } catch (IOException e1) {
                 e1.printStackTrace();
@@ -83,7 +91,7 @@ public class Login_as_admin_control {
         try {
             stage.setScene(new Scene(loader.load(),1280,720));
             stage.setTitle("Register user");
-
+            new FadeInDownBig(stage.getScene().getRoot()).play();
             Register_control controller = (Register_control) loader.getController();
 
             stage.show();
