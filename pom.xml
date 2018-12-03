@@ -74,6 +74,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
+        
+        <dependency>
+            <groupId>io.github.typhon0</groupId>
+            <artifactId>AnimateFX</artifactId>
+            <version>1.2.0</version>
+            <type>pom</type>
+        </dependency>
 
     </dependencies>
 
