@@ -36,10 +36,11 @@ public class Permission_control {
         try {
             stage.setScene(new Scene(loader.load(),1280,720));
             stage.setTitle("Hotel Management");
-            new Pulse(stage.getScene().getRoot()).play();
-            Login_as_admin_control controller = (Login_as_admin_control) loader.getController();
 
+            Login_as_admin_control controller = (Login_as_admin_control) loader.getController();
+            new FadeIn(stage.getScene().getRoot()).play();
             stage.show();
+
         } catch (IOException e1){
             e1.printStackTrace();
         }

@@ -2,6 +2,7 @@ package Admin;
 
 import Model.Clock;
 import Model.Room;
+import Model.User;
 import Store.DBConnector;
 import Store.RoomDBConnector;
 import Store.UserDBControl;
@@ -36,7 +37,7 @@ import java.util.Optional;
 
 public class Manu_control extends Clock {
 
-    private String lastLogin = "";
+    private User lastLogin = User.getUserObject();
     private String[] roomName = {"B2","C3"} ;
     private String typeRoom = "";
 
@@ -62,9 +63,8 @@ public class Manu_control extends Clock {
     private ArrayList<String> numberOfRoom = new ArrayList<>();
 
     @FXML
-    public void setUser(String name) {
-        user.setText("Login as : " + name);
-        lastLogin = name;
+    public void setUser() {
+        user.setText("Login as : " +lastLogin.getUserName());
 
         start();
         super.showClock(timeZone);
@@ -117,10 +117,8 @@ public class Manu_control extends Clock {
 
 
     @FXML
-    public void setUserAfterClickRoom(String name){
-        lastLogin = name;
-        user.setText("Login as : "+name);
-
+    public void setUserAfterClickRoom(){
+        user.setText("Login as : "+lastLogin.getUserName());
         start();
     }
 
@@ -239,14 +237,13 @@ public class Manu_control extends Clock {
                     try {
                         stage.setScene(new Scene(loader.load(), 1280, 720));
                         stage.setTitle("Reserve info");
-                        new JackInTheBox(stage.getScene().getRoot()).play();
-
                         Reserve_info_control controller = (Reserve_info_control) loader.getController();
                         controller.roomNumber(room,roomPrice);
-                        controller.name(lastLogin);
+                        controller.name();
                         controller.showTypeRoom(typeRoom);
 
                         stage.show();
+                        new Pulse(stage.getScene().getRoot()).play();
 
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -267,6 +264,7 @@ public class Manu_control extends Clock {
 
                         controller.setNowRoom(s);
                         controller.setManu_control(this);
+                        controller.setSetLogin();
 
                         stage.show();
                         new FadeInLeftBig(stage.getScene().getRoot()).play();

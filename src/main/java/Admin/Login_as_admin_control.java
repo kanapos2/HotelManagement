@@ -37,8 +37,7 @@ public class Login_as_admin_control {
     @FXML
     private PasswordField password ;
 
-    @FXML
-    protected Pane pane;
+
 
     public void initialize(){
 
@@ -56,6 +55,15 @@ public class Login_as_admin_control {
             if (((anUserList.getUserName()) + (anUserList.getPassWord())).equals(checkLogin)) {
                 System.out.println(((anUserList.getUserName()) + (anUserList.getPassWord())));
                 canLogin = true;
+                ////// skeleton pattern //////
+                User currentLoginUser = User.loginUser();
+                currentLoginUser.setiDentify(anUserList.getiDentify());
+                currentLoginUser.setUserName(anUserList.getUserName());
+                currentLoginUser.setFirstName(anUserList.getFirstName());
+                currentLoginUser.setLastName(anUserList.getLastName());
+                currentLoginUser.setPhone(anUserList.getPhone());
+                currentLoginUser.seteMail(anUserList.geteMail());
+
             }
         }
         if (canLogin && event.getSource().equals(btn_login)) {
@@ -70,9 +78,10 @@ public class Login_as_admin_control {
 
 
                 Manu_control controller = (Manu_control) loader_Manu.getController();
-                controller.setUser(username.getText());
+                controller.setUser();
                 stage.show();
                 new FadeIn(stage.getScene().getRoot()).play();
+
 
             } catch (IOException e1) {
                 e1.printStackTrace();
@@ -80,6 +89,7 @@ public class Login_as_admin_control {
         }
         else {
             invalid.setText("Invalid username or password");
+            new Shake(username.getScene().getRoot()).play();
         }
     }
 

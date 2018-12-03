@@ -1,6 +1,7 @@
 package Admin;
 
 import Model.Room;
+import Model.User;
 import Store.DBConnector;
 import Store.RoomDBConnector;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class CheckOut_control {
+    public String setLogin;
+
     protected Room nowRoom;
     @FXML
     protected Label typeRoom;
@@ -55,6 +58,11 @@ public class CheckOut_control {
     @FXML
     protected Button canclebt,checkoutbt;
 
+    public void setSetLogin() {
+        this.setLogin = User.getUserObject().getUserName();
+        loginAs.setText(setLogin);
+    }
+
     protected Manu_control manu_control;
 
     public void setManu_control(Manu_control manu_control) {
@@ -68,6 +76,7 @@ public class CheckOut_control {
     }
 
     public void startSetScene(){
+        roomnumber.setText(nowRoom.getRoomNumber());
         firstName.setText(nowRoom.getFirstName());
         lastName.setText(nowRoom.getLastName());
         ID.setText(nowRoom.getPassport());

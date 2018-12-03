@@ -24,7 +24,7 @@ public class Information_control extends Clock {
     protected Label timeInformation,chIn,chOut,fName,lName,sexual,mail,phone,pass;
 
     @FXML
-    protected Label thisPrice;
+    protected Label thisPrice,roomID;
 
     @FXML
     private Button close ;
@@ -48,6 +48,7 @@ public class Information_control extends Clock {
 
     @FXML
     public void setShowInformation(){
+        roomID.setText(nowInfo.getRoomNumber());
         chIn.setText(nowInfo.getCheckIn());
         chOut.setText(nowInfo.getCheckOut());
         fName.setText(nowInfo.getFirstName());

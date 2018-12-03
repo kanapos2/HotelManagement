@@ -9,6 +9,15 @@ public class User {
     private String eMail;
     private String passWord;
 
+    public static User userObject;
+
+    public static User loginUser(){
+        if (userObject == null){
+            userObject = new User();
+        }
+        return userObject;
+    }
+
     public User(String iDentify, String userName, String firstName, String lastName,String phone, String eMail, String passWord) {
         this.iDentify = iDentify;
         this.userName = userName;
@@ -21,6 +30,10 @@ public class User {
 
     public User(){
 
+    }
+
+    public static User getUserObject() {
+        return userObject;
     }
 
     public String getiDentify() {

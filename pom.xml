@@ -8,6 +8,14 @@
     <artifactId>HotelMN</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+
 
     <build>
         <plugins>
@@ -81,6 +89,14 @@
             <version>1.2.0</version>
             <type>pom</type>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.github.typhon0</groupId>
+            <artifactId>AnimateFX</artifactId>
+            <version>1.2.0-SNAPSHOT</version>
+        </dependency>
+
 
     </dependencies>
 

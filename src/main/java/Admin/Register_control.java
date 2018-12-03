@@ -171,10 +171,20 @@ public class Register_control {
     }
 
     public void Confirm(){ // Stored data and back to log-in page
+        // Check User Object if null make new one //
         UserDBControl userDBControl = DBConnector.openUserDB();
-        User newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneText,
-                emailField.getText(),password.getText());
+        User newUser = User.loginUser();
+//        newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneText,
+//                emailField.getText(),password.getText());
+        newUser.setiDentify(accountID.getText());
+        newUser.setUserName(userNamefield.getText());
+        newUser.setFirstName(firstnameField.getText());
+        newUser.setLastName(lastnameField.getText());
+        newUser.setPhone(phoneText);
+        newUser.seteMail(emailField.getText());
+        newUser.setPassWord(password.getText());
         userDBControl.addUser(newUser);
+        // End of make User //
         accountID.clear();
         userNamefield.clear();
         firstnameField.clear();

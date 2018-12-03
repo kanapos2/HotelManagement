@@ -1,7 +1,4 @@
-import animatefx.animation.BounceIn;
-import animatefx.animation.FadeIn;
-import animatefx.animation.FadeInDownBig;
-import animatefx.animation.JackInTheBox;
+import animatefx.animation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hotel Management");
         primaryStage.setScene(new Scene(root, 1280 , 720));
         primaryStage.show();
-        new FadeIn(root).play();
+        new Pulse(root).play();
     }
 
 

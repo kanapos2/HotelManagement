@@ -94,10 +94,9 @@ public class Reserve_info_control {
 
 
     @FXML
-    public void name(String nameLogin){
-        test.setText("Login as : "+nameLogin);
-        nowLogin = nameLogin;
-        System.out.println(nowLogin);
+    public void name(){
+        nowLogin = User.loginUser().getUserName();
+        test.setText("Login as : "+nowLogin);
     }
 
     @FXML
@@ -118,7 +117,7 @@ public class Reserve_info_control {
             stage.setTitle("Reserve hotel");
 
             Manu_control controller = (Manu_control) loader.getController();
-            controller.setUserAfterClickRoom(nowLogin);
+            controller.setUserAfterClickRoom();
 
             stage.show();
 
@@ -170,7 +169,7 @@ public class Reserve_info_control {
                 stage.setTitle("Reserve hotel");
 
                 Manu_control controller = (Manu_control) loader.getController();
-                controller.setUserAfterClickRoom(nowLogin);
+                controller.setUserAfterClickRoom();
 
                 stage.show();
 
