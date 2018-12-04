@@ -14,12 +14,12 @@
          <items>
             <AnchorPane prefHeight="398.0" prefWidth="257.0">
                <children>
-                  <Label fx:id="typeRoom" alignment="CENTER" layoutX="74.0" layoutY="233.0" prefHeight="33.0" prefWidth="142.0" text="type" textFill="#1f7aa8">
+                  <Label fx:id="typeRoom" alignment="CENTER" layoutX="90.0" layoutY="233.0" prefHeight="33.0" prefWidth="126.0" text="type" textFill="#1f7aa8">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roomnumber" layoutX="49.0" layoutY="181.0" prefHeight="34.0" prefWidth="126.0" text="roomNum" textFill="#1f7aa8">
+                  <Label fx:id="roomnumber" alignment="CENTER" layoutX="51.0" layoutY="182.0" prefHeight="34.0" prefWidth="126.0" text="roomNum" textFill="#1f7aa8">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -39,7 +39,7 @@
                         <Image url="@../images/dippinno_logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="2.0" layoutY="242.0" text="Type room :" />
+                  <Label layoutX="11.0" layoutY="242.0" text="Type room :" />
                   <Label layoutX="20.0" layoutY="286.0" text="Check-In date :" />
                   <Label layoutX="10.0" layoutY="328.0" text="Check-Out date :" />
                   <Label fx:id="Inday" layoutX="120.0" layoutY="283.0" prefHeight="24.0" prefWidth="88.0" text="Date" />

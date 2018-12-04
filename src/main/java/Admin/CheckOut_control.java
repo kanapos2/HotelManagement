@@ -58,9 +58,10 @@ public class CheckOut_control {
     @FXML
     protected Button canclebt,checkoutbt;
 
-    public void setSetLogin() {
+    public void setSetLogin(String room) {
         this.setLogin = User.getUserObject().getUserName();
-        loginAs.setText(setLogin);
+        loginAs.setText("Login as: "+setLogin);
+        typeRoom.setText(room);
     }
 
     protected Manu_control manu_control;

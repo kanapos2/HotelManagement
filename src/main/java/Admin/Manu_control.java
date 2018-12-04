@@ -264,7 +264,7 @@ public class Manu_control extends Clock {
 
                         controller.setNowRoom(s);
                         controller.setManu_control(this);
-                        controller.setSetLogin();
+                        controller.setSetLogin(typeRoom);
 
                         stage.show();
                         new FadeInLeftBig(stage.getScene().getRoot()).play();
