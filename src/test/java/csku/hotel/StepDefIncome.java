@@ -107,11 +107,6 @@ public class StepDefIncome {
     Room room = new Room();
     RoomDBConnector dbControl_Add;
 
-    @BeforeEach
-    public void initialize(){
-        room.setRoomNumber("B202");
-    }
-
     @Given("^Customer want to reserve room$")
     public void customer_want_to_reserve_room() throws Throwable {
     }
@@ -167,6 +162,7 @@ public class StepDefIncome {
 
     @Then("^The room has been created and record to database$")
     public void the_room_has_been_created_and_record_to_database() throws Throwable {
+        room.setRoomNumber("B202");
         dbControl_Add.addInformation(room,1);
     }
 
