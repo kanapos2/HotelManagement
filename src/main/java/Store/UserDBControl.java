@@ -32,8 +32,9 @@ public class UserDBControl {
                 addResult = true;
             }
         }
-        catch (SQLException e){
-            e.printStackTrace();
+        catch (SQLException e ){
+            System.err.println("Cannot Add User");
+            //e.printStackTrace();
         }finally {
             DBConnector.closeAllConfigure(resultSet,stmt,connection);
         }

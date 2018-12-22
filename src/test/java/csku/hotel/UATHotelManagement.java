@@ -1,4 +1,4 @@
-package csku.account;
+package csku.hotel;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -7,8 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = {"pretty", "html:target/cucumber"},
-        features = {"classpath:features/incomeManagement.feature"}
+        features = {"classpath:hotel/TestRegister.feature",
+                "classpath:hotel/TestReserve.feature"}
+
 )
 
-public class UATIncomeManagement {
+public class UATHotelManagement {
 }

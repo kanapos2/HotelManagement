@@ -4,7 +4,6 @@ import Model.Room;
 import Model.User;
 import Store.DBConnector;
 import Store.RoomDBConnector;
-import Store.UserDBControl;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,12 +13,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Optional;
 
 public class Reserve_info_control {
 
@@ -95,7 +90,7 @@ public class Reserve_info_control {
 
     @FXML
     public void name(){
-        nowLogin = User.loginUser().getUserName();
+        nowLogin = User.getInstance().getUserName();
         test.setText("Login as : "+nowLogin);
     }
 

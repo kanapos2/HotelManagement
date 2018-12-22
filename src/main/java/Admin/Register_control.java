@@ -173,7 +173,7 @@ public class Register_control {
     public void Confirm(){ // Stored data and back to log-in page
         // Check User Object if null make new one //
         UserDBControl userDBControl = DBConnector.openUserDB();
-        User newUser = User.loginUser();
+        User newUser = User.getInstance();
 //        newUser = new User(accountID.getText(),userNamefield.getText(),firstnameField.getText(),lastnameField.getText(),phoneText,
 //                emailField.getText(),password.getText());
         newUser.setiDentify(accountID.getText());

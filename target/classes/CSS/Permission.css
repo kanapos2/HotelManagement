@@ -1,7 +1,6 @@
 .button{
     -fx-border-radius: 100 100 100 100;
     -fx-background-radius: 100 100 100 100;
-    -fx-cursor: wait;
 
     /*-fx-background-color: linear-gradient(to top left, #003366 0%, #663300 100%) ;*/
 }
@@ -20,5 +19,4 @@
 
 #regisPane{
     -fx-background-color: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%) ;
-
 }

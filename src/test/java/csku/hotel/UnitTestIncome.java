@@ -1,4 +1,4 @@
-//package csku.account;
+//package csku.hotel;
 //
 //import csku.Income.Income;
 //import org.junit.jupiter.api.BeforeEach;

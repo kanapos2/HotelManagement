@@ -9,13 +9,13 @@ public class User {
     private String eMail;
     private String passWord;
 
-    public static User userObject;
+    public static User instance;
 
-    public static User loginUser(){
-        if (userObject == null){
-            userObject = new User();
+    public static User getInstance(){
+        if (instance == null){
+            instance = new User();
         }
-        return userObject;
+        return instance;
     }
 
     public User(String iDentify, String userName, String firstName, String lastName,String phone, String eMail, String passWord) {
@@ -33,7 +33,7 @@ public class User {
     }
 
     public static User getUserObject() {
-        return userObject;
+        return instance;
     }
 
     public String getiDentify() {
